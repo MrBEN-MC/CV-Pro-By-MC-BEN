@@ -49,14 +49,30 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* ==========================================================================
+   AMBIENT BACKGROUND CV TEXT UNIVERSE (Kinetic Obsidian Space)
+   Floating Brand & CV Typography in the black background area
+   ========================================================================== */
+#cvAmbientCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1; /* Behind .page-container (z-index 10) */
+}
+
 .cv-viewport,
 .page-container {
     display: flex;
     justify-content: center;
-    padding: 75px 20px 60px;
+    padding: 30px 20px 60px;
     min-height: 100vh;
     box-sizing: border-box;
     background: transparent;
+    position: relative;
+    z-index: 10;
 }
 
 /* Strict A4 Document Page - Floating Pristine Canvas */
@@ -94,40 +110,92 @@ body {
 }
 
 /* ==========================================================================
-   FLOATING TOP ACTION BAR (Obsidian HUD)
+   LEFT SIDE STUDIO ACTION BAR (ArtCraft Obsidian Dock)
    ========================================================================== */
 .top-action-bar {
     position: fixed;
-    top: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(8, 10, 16, 0.88);
-    backdrop-filter: blur(20px) saturate(190%);
-    -webkit-backdrop-filter: blur(20px) saturate(190%);
+    top: 20px;
+    left: 20px;
+    width: 205px;
+    background: rgba(8, 10, 16, 0.94);
+    backdrop-filter: blur(24px) saturate(190%);
+    -webkit-backdrop-filter: blur(24px) saturate(190%);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 40px;
-    padding: 7px 14px;
+    border-radius: 18px;
+    padding: 14px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    z-index: 2500;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+.top-action-bar::-webkit-scrollbar {
+    width: 4px;
+}
+.top-action-bar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+.studio-brand-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 2px 4px 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 4px;
+}
+
+.studio-brand-pill {
     display: flex;
     align-items: center;
-    gap: 8px;
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.04);
-    z-index: 2500;
+    gap: 6px;
+}
+
+.studio-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #06b6d4;
+    box-shadow: 0 0 8px #06b6d4;
+}
+
+.studio-brand-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.1em;
+}
+
+.studio-brand-by {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: #06b6d4;
+    font-weight: 700;
+    letter-spacing: 0.12em;
 }
 
 .action-bar-btn {
     background: rgba(255, 255, 255, 0.04);
     color: #e2e8f0;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 7px 14px;
-    border-radius: 20px;
-    font-size: 12px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 11.5px;
     font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    white-space: nowrap;
+    width: 100%;
+    box-sizing: border-box;
+    text-decoration: none;
 }
 
 .action-bar-btn:hover {
@@ -135,7 +203,7 @@ body {
     color: #ffffff;
     border-color: rgba(56, 189, 248, 0.4);
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.18);
-    transform: translateY(-1px);
+    transform: translateX(2px);
 }
 
 .action-bar-btn.primary {
@@ -173,13 +241,14 @@ body {
     background: #090d16;
     color: #f8fafc;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 6px 12px;
-    border-radius: 18px;
-    font-size: 12px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 11px;
     font-weight: 600;
     outline: none;
     cursor: pointer;
-    max-width: 170px;
+    width: 100%;
+    box-sizing: border-box;
     transition: border-color 0.2s;
 }
 
@@ -194,14 +263,15 @@ body {
 }
 
 /* ==========================================================================
-   SLIDE-OUT CUSTOMIZER DRAWER (ArtCraft Obsidian Panel)
+   RIGHT SIDE CUSTOMIZATION TOOLS (ArtCraft Obsidian Inspector)
    ========================================================================== */
 .customizer-drawer {
     position: fixed;
-    top: 68px;
+    top: 20px;
     right: 20px;
-    width: 370px;
-    max-height: calc(100vh - 85px);
+    width: 330px;
+    height: calc(100vh - 40px);
+    max-height: calc(100vh - 40px);
     background: rgba(9, 11, 17, 0.96);
     backdrop-filter: blur(24px) saturate(190%);
     -webkit-backdrop-filter: blur(24px) saturate(190%);
@@ -209,14 +279,86 @@ body {
     border-radius: 18px;
     box-shadow: -15px 0 50px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.04);
     z-index: 2600;
-    display: none;
+    display: flex; /* Open on right by default */
     flex-direction: column;
     overflow: hidden;
     color: #f1f5f9;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
 }
 
-.customizer-drawer.open {
+.customizer-drawer.collapsed {
+    transform: translateX(360px);
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* Smart Context Inspector Card */
+.context-inspector-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 16px;
     display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.context-card-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.context-live-pill {
+    font-family: 'Space Mono', monospace;
+    font-size: 8.5px;
+    font-weight: 700;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.15);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 4px;
+    padding: 1px 5px;
+    letter-spacing: 0.06em;
+}
+
+.context-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.context-desc {
+    font-size: 10.5px;
+    color: #94a3b8;
+    line-height: 1.35;
+}
+
+.context-quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.context-action-chip {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.context-action-chip:hover {
+    background: rgba(56, 189, 248, 0.18);
+    border-color: #38bdf8;
+    color: #ffffff;
 }
 
 .drawer-header {
@@ -1375,6 +1517,8 @@ input:checked + .slider-toggle:before {
 
     .top-action-bar,
     .customizer-drawer,
+    #cvAmbientCanvas,
+    .cv-ambient-text-universe,
     .photo-hidden-placeholder,
     .cv-add-btn,
     .cv-section-add-btn,
@@ -1409,3 +1553,43 @@ input:checked + .slider-toggle:before {
         background: transparent !important;
     }
 }
+
+/* ==========================================================================
+   RESPONSIVE STUDIO DOCKS
+   ========================================================================== */
+@media (max-width: 1380px) {
+    .top-action-bar {
+        width: 175px;
+        padding: 10px 8px;
+    }
+    .customizer-drawer {
+        width: 290px;
+    }
+}
+
+@media (max-width: 1180px) {
+    .top-action-bar {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        width: calc(100vw - 20px);
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-height: 120px;
+        padding: 8px 12px;
+    }
+    .top-action-bar .action-bar-btn {
+        width: auto;
+    }
+    .top-action-bar .template-selector {
+        width: auto;
+        max-width: 160px;
+    }
+    .customizer-drawer {
+        display: none;
+    }
+    .customizer-drawer.open {
+        display: flex;
+    }
+}
+

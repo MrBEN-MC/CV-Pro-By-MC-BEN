@@ -301,11 +301,19 @@
             pointer-events: auto;
         }
 
-        /* SCROLLED BACKDROP PARALLAX STATE: Sinks into background in a subtle, little blurry state */
+        /* SCROLLED BACKDROP MOTION BLUR STATE: Sinks into background with dynamic motion blur trails */
         .vortex-hero.scrolled-backdrop {
-            filter: blur(5px) brightness(0.68);
-            opacity: 0.52;
+            filter: url(#stormMotionBlurFilter) blur(1.5px) brightness(0.96);
+            opacity: 0.90;
             pointer-events: none;
+        }
+
+        .vortex-hero.scrolled-backdrop .vortex-storm-turntable {
+            filter: url(#stormMotionBlurFilter);
+        }
+
+        .vortex-hero.scrolled-backdrop .neon-arc-svg {
+            filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.55));
         }
 
         .vortex-hero-spacer {
@@ -722,7 +730,7 @@
 
         /* ========================================================
            CATALOG SECTION & FOREGROUND CONTAINER
-           Sliding over the blurred background storm smoothly
+           Transparent foreground letting the circling background storm shine through
            ======================================================== */
         .catalog-section {
             position: relative;
@@ -730,18 +738,16 @@
             max-width: 1550px;
             margin: 0 auto;
             padding: 60px 24px 90px;
-            background: rgba(5, 5, 7, 0.78);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: transparent;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px 24px 0 0;
-            box-shadow: 0 -30px 80px rgba(0, 0, 0, 0.95);
         }
 
         /* Search & Filter Dock */
         .control-dock-inner {
-            background: rgba(14, 14, 18, 0.85);
+            background: rgba(10, 12, 18, 0.55);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-line);
             border-radius: 10px;
             padding: 16px 22px;
@@ -831,31 +837,37 @@
             gap: 28px;
         }
 
-        /* Card Architecture */
+        /* Card Architecture - Translucent Smoked Glass to see through the storm */
         .template-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-line);
-            border-radius: 10px;
+            background: rgba(13, 14, 21, 0.65);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04);
         }
 
         .template-card:hover {
-            border-color: var(--border-hover);
+            background: rgba(18, 20, 30, 0.78);
+            border-color: rgba(56, 189, 248, 0.5);
             transform: translateY(-5px);
-            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.12);
+            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(56, 189, 248, 0.25);
         }
 
         .card-preview-viewport {
             position: relative;
             width: 100%;
             height: 400px;
-            background: #000000;
+            background: rgba(6, 6, 10, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             overflow: hidden;
-            border-bottom: 1px solid var(--border-line);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -924,6 +936,7 @@
             display: flex;
             flex-direction: column;
             flex: 1;
+            background: rgba(10, 11, 16, 0.45);
         }
 
         .card-meta-row {
@@ -1487,6 +1500,20 @@
                     <stop offset="50%" stop-color="#34d399" stop-opacity="0.85" />
                     <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
                 </linearGradient>
+
+                <!-- Tangential Motion Blur Streak Filter -->
+                <filter id="stormMotionBlurFilter" x="-40%" y="-40%" width="180%" height="180%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10 1.2" result="blurStreak" />
+                    <feColorMatrix type="matrix" values="
+                        1 0 0 0 0
+                        0 1 0 0 0
+                        0 0 1 0 0
+                        0 0 0 1.2 0" result="boosted" />
+                    <feMerge>
+                        <feMergeNode in="boosted" />
+                        <feMergeNode in="SourceGraphic" opacity="0.6" />
+                    </feMerge>
+                </filter>
             </defs>
         </svg>
 
@@ -2218,11 +2245,19 @@
             const scatG3 = document.getElementById('scatG3');
 
             if (hero && epicenter) {
-                // Background storm stays running, transitions to subtle blurry state
-                if (scrollTop > 40) {
-                    hero.classList.add('scrolled-backdrop');
-                } else {
+                // Background storm stays crisp in hero; enters dynamic motion blur state in template area
+                if (scrollTop < 360) {
+                    hero.style.filter = 'none';
+                    hero.style.opacity = '1';
                     hero.classList.remove('scrolled-backdrop');
+                } else {
+                    const t = Math.min((scrollTop - 360) / 450, 1);
+                    const blurVal = (t * 1.5).toFixed(1);
+                    const brightVal = (1 - t * 0.04).toFixed(2);
+                    const opacVal = (1 - t * 0.08).toFixed(2);
+                    hero.style.filter = `url(#stormMotionBlurFilter) blur(${blurVal}px) brightness(${brightVal})`;
+                    hero.style.opacity = opacVal;
+                    hero.classList.add('scrolled-backdrop');
                 }
 
                 // Scattering ratio (0 at top, 1 when scrolled ~260px)
