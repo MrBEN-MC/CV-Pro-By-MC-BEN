@@ -20,6 +20,7 @@
             --accent-blue: #3b82f6;
             --accent-purple: #8b5cf6;
             --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
             --text-heading: #ffffff;
             --text-body: #a1a1aa;
             --text-muted: #64748b;
@@ -42,6 +43,7 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             min-height: 100vh;
+            padding-right: 52px; /* Reserved space for the Right HUD Scroll Ruler */
         }
 
         /* Ambient Lighting */
@@ -57,6 +59,118 @@
             z-index: 0;
         }
 
+        /* ========================================================
+           RIGHT-SIDE CONTINUOUS HUD SCROLL RULER WITH SLIDING ROLLER
+           ======================================================== */
+        .hud-scroll-ruler-right {
+            position: fixed;
+            right: 0;
+            left: auto;
+            top: 54px; /* below top navigation */
+            bottom: 0;
+            width: 52px;
+            z-index: 55;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(5, 5, 7, 0.72);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .ruler-track-line {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, rgba(56, 189, 248, 0.45), rgba(255, 255, 255, 0.1) 50%, rgba(16, 185, 129, 0.45));
+        }
+
+        /* Dynamic Sliding Roller Indicator */
+        .ruler-sliding-roller {
+            position: absolute;
+            right: 4px;
+            top: 14px;
+            width: 44px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 4px;
+            transition: transform 0.08s ease-out;
+            will-change: transform;
+            z-index: 10;
+        }
+
+        .roller-needle {
+            width: 10px;
+            height: 2px;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        .roller-badge {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            color: #ffffff;
+            background: rgba(6, 182, 212, 0.22);
+            border: 1px solid var(--accent-cyan);
+            padding: 2px 5px;
+            border-radius: 3px;
+            letter-spacing: 0.05em;
+            text-align: center;
+            box-shadow: 0 0 12px rgba(6, 182, 212, 0.45);
+            white-space: nowrap;
+        }
+
+        /* Calibrated Vernier Ticks along the ruler */
+        .ruler-tick-item {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px 0 6px;
+            transition: all 0.25s ease;
+        }
+
+        .tick-label {
+            font-family: var(--font-mono);
+            font-size: 9.5px;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            transition: color 0.2s;
+        }
+
+        .tick-mark {
+            width: 7px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.18);
+            transition: all 0.2s;
+        }
+
+        .tick-mark.long {
+            width: 14px;
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .ruler-tick-item.active-glow .tick-label {
+            color: var(--accent-cyan);
+            font-weight: 700;
+            text-shadow: 0 0 8px rgba(6, 182, 212, 0.6);
+        }
+
+        .ruler-tick-item.active-glow .tick-mark {
+            background: var(--accent-cyan);
+            box-shadow: 0 0 8px var(--accent-cyan);
+            width: 16px;
+        }
+
         /* Top HUD Navigation Bar */
         .site-nav {
             position: sticky;
@@ -64,14 +178,14 @@
             left: 0;
             width: 100%;
             z-index: 60;
-            background: rgba(5, 5, 7, 0.9);
+            background: rgba(5, 5, 7, 0.92);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-line);
         }
 
         .nav-container {
-            max-width: 1500px;
+            max-width: 1550px;
             margin: 0 auto;
             display: flex;
             align-items: stretch;
@@ -162,56 +276,43 @@
         }
 
         /* ========================================================
-           SPINNING STORM / VORTEX HERO SECTION (ArtCraft Inspired)
+           SPINNING STORM / VORTEX HERO SECTION
+           Fixed Background Storm • Never Disappears • Smooth 60 FPS
            ======================================================== */
         .vortex-hero {
-            position: relative;
-            width: 100%;
-            min-height: 880px;
-            height: 95vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: radial-gradient(circle at center, #0b0b12 0%, var(--bg-void) 70%);
-            border-bottom: 1px solid var(--border-line);
-        }
-
-        /* Radar HUD edge markings */
-        .vortex-ruler-right {
-            position: absolute;
-            right: 28px;
-            top: 15%;
-            bottom: 15%;
-            width: 40px;
-            border-right: 1px solid rgba(255, 255, 255, 0.12);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-end;
-            padding-right: 8px;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--text-muted);
+            background: radial-gradient(circle at center, #0b0b14 0%, var(--bg-void) 70%);
+            z-index: 1;
+            transition: filter 0.5s ease, opacity 0.5s ease;
+            will-change: filter, opacity;
             pointer-events: none;
-            z-index: 25;
         }
 
-        .ruler-mark {
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .vortex-hero .orbit-card,
+        .vortex-hero .vortex-epicenter {
+            pointer-events: auto;
         }
 
-        .ruler-tick {
-            width: 8px;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.2);
+        /* SCROLLED BACKDROP PARALLAX STATE: Sinks into background in a subtle, little blurry state */
+        .vortex-hero.scrolled-backdrop {
+            filter: blur(5px) brightness(0.68);
+            opacity: 0.52;
+            pointer-events: none;
         }
 
-        .ruler-mark:nth-child(even) .ruler-tick {
-            width: 14px;
-            background: var(--accent-cyan);
+        .vortex-hero-spacer {
+            height: 85vh;
+            pointer-events: none;
+            position: relative;
+            z-index: 2;
         }
 
         /* Bottom-right HUD corner links (ArtCraft style) */
@@ -233,7 +334,7 @@
 
         .vortex-hud-corner span {
             display: block;
-            color: rgba(255, 255, 255, 0.45);
+            color: rgba(255, 255, 255, 0.4);
             transition: color 0.2s;
         }
 
@@ -279,13 +380,7 @@
             border: 1px solid rgba(255, 255, 255, 0.035);
         }
 
-        .orbit-ring-5 {
-            width: 1840px;
-            height: 1840px;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-        }
-
-        /* Glowing Neon Arc Tracks (Curved trails) */
+        /* Glowing Neon Arc Tracks */
         .neon-arc-svg {
             position: absolute;
             width: 1500px;
@@ -296,19 +391,16 @@
             pointer-events: none;
         }
 
-        /* The Main Rotating Storm Container */
+        /* Main Rotating Storm Container — Continuous Fluid Motion */
         .vortex-storm-turntable {
             position: absolute;
             width: 1500px;
             height: 1500px;
-            animation: vortex-spin 70s linear infinite;
+            animation: vortex-spin 65s linear infinite;
             transform-origin: center center;
             z-index: 5;
-            transition: animation-play-state 0.3s;
-        }
-
-        .vortex-hero:hover .vortex-storm-turntable {
-            animation-play-state: paused;
+            will-change: transform;
+            pointer-events: none; /* Children enable pointer-events */
         }
 
         @keyframes vortex-spin {
@@ -316,92 +408,180 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Floating Orbiting CV Cards */
+        /* ========================================================
+           PROFESSIONAL CV MODULE & WIREFRAME CARDS (Zero Personal Data)
+           Smooth Non-Glitching Straight-Upright Hover Inspection
+           ======================================================== */
         .orbit-card {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 145px;
-            height: 205px;
-            background: #111116;
+            width: 160px;
+            height: 215px;
+            background: rgba(14, 14, 20, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.85), 0 0 20px rgba(59, 130, 246, 0.12);
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s, box-shadow 0.28s;
             pointer-events: auto;
             text-decoration: none;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            padding: 14px;
+            color: #ffffff;
+            user-select: none;
         }
 
-        .orbit-card:hover {
-            transform: scale(1.22) translateZ(50px) !important;
-            border-color: #38bdf8;
-            box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.9), 0 0 30px rgba(56, 189, 248, 0.4);
-            z-index: 100;
+        /* When hovered, card stands straight (level 0 deg) for easy reading while circling smoothly */
+        .orbit-card.straight-hover {
+            transition: border-color 0.25s, box-shadow 0.25s, background-color 0.25s !important;
+            border-color: #38bdf8 !important;
+            box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.98), 0 0 40px rgba(56, 189, 248, 0.5) !important;
+            z-index: 1000 !important;
+            background: rgba(18, 18, 26, 0.98) !important;
         }
 
-        .orbit-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
-            display: block;
-        }
-
-        .orbit-card-tag {
-            position: absolute;
-            bottom: 6px;
-            left: 6px;
-            right: 6px;
-            padding: 3px 6px;
-            background: rgba(0, 0, 0, 0.82);
-            backdrop-filter: blur(6px);
-            border-radius: 4px;
+        .orbit-card-badge {
             font-family: var(--font-mono);
             font-size: 8.5px;
-            letter-spacing: 0.08em;
-            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            text-align: center;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            padding: 2px 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-line);
+            color: var(--accent-cyan);
+            width: fit-content;
+            margin-bottom: 8px;
+        }
+
+        .orbit-card-title {
+            font-size: 13px;
+            font-weight: 800;
+            line-height: 1.25;
+            color: #ffffff;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+
+        .orbit-card-keywords {
+            font-size: 10px;
+            color: var(--text-body);
+            line-height: 1.45;
+            flex: 1;
+        }
+
+        /* Abstract Mini CV Wireframe Graphics */
+        .mini-cv-wireframe {
+            flex: 1;
+            display: flex;
+            gap: 6px;
+            padding: 4px 0;
+        }
+
+        .wireframe-sidebar {
+            width: 32%;
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px 4px;
+            gap: 4px;
+        }
+
+        .wireframe-avatar {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .wireframe-line {
+            height: 2.5px;
+            border-radius: 1px;
+            background: rgba(255, 255, 255, 0.18);
+            width: 100%;
+        }
+
+        .wireframe-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 4px 0;
+        }
+
+        .wireframe-line.primary {
+            background: var(--accent-cyan);
+            width: 65%;
+            height: 3.5px;
+        }
+
+        .orbit-card-footer {
+            margin-top: auto;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 8.5px;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         /* Placement of Orbit Cards across the Storm Vortex */
-        /* Inner Ring Cards (Radius ~ 340px) */
-        .oc-1  { transform: translate(-50%, -50%) rotate(0deg) translateY(-340px) rotate(0deg); }
-        .oc-2  { transform: translate(-50%, -50%) rotate(51.4deg) translateY(-340px) rotate(-51.4deg); }
-        .oc-3  { transform: translate(-50%, -50%) rotate(102.8deg) translateY(-340px) rotate(-102.8deg); }
-        .oc-4  { transform: translate(-50%, -50%) rotate(154.2deg) translateY(-340px) rotate(-154.2deg); }
-        .oc-5  { transform: translate(-50%, -50%) rotate(205.7deg) translateY(-340px) rotate(-205.7deg); }
-        .oc-6  { transform: translate(-50%, -50%) rotate(257.1deg) translateY(-340px) rotate(-257.1deg); }
-        .oc-7  { transform: translate(-50%, -50%) rotate(308.5deg) translateY(-340px) rotate(-308.5deg); }
+        /* Inner Ring Cards (Radius ~ 350px) */
+        .oc-1  { transform: translate(-50%, -50%) rotate(0deg) translateY(-350px) rotate(0deg); }
+        .oc-2  { transform: translate(-50%, -50%) rotate(51.4deg) translateY(-350px) rotate(-51.4deg); }
+        .oc-3  { transform: translate(-50%, -50%) rotate(102.8deg) translateY(-350px) rotate(-102.8deg); }
+        .oc-4  { transform: translate(-50%, -50%) rotate(154.2deg) translateY(-350px) rotate(-154.2deg); }
+        .oc-5  { transform: translate(-50%, -50%) rotate(205.7deg) translateY(-350px) rotate(-205.7deg); }
+        .oc-6  { transform: translate(-50%, -50%) rotate(257.1deg) translateY(-350px) rotate(-257.1deg); }
+        .oc-7  { transform: translate(-50%, -50%) rotate(308.5deg) translateY(-350px) rotate(-308.5deg); }
 
-        /* Outer Ring Cards (Radius ~ 560px) */
-        .oc-8  { transform: translate(-50%, -50%) rotate(25deg) translateY(-560px) rotate(-25deg); }
-        .oc-9  { transform: translate(-50%, -50%) rotate(76.4deg) translateY(-560px) rotate(-76.4deg); }
-        .oc-10 { transform: translate(-50%, -50%) rotate(127.8deg) translateY(-560px) rotate(-127.8deg); }
-        .oc-11 { transform: translate(-50%, -50%) rotate(179.2deg) translateY(-560px) rotate(-179.2deg); }
-        .oc-12 { transform: translate(-50%, -50%) rotate(230.7deg) translateY(-560px) rotate(-230.7deg); }
-        .oc-13 { transform: translate(-50%, -50%) rotate(282.1deg) translateY(-560px) rotate(-282.1deg); }
-        .oc-14 { transform: translate(-50%, -50%) rotate(333.5deg) translateY(-560px) rotate(-333.5deg); }
+        /* Outer Ring Cards (Radius ~ 580px) */
+        .oc-8  { transform: translate(-50%, -50%) rotate(25deg) translateY(-580px) rotate(-25deg); }
+        .oc-9  { transform: translate(-50%, -50%) rotate(76.4deg) translateY(-580px) rotate(-76.4deg); }
+        .oc-10 { transform: translate(-50%, -50%) rotate(127.8deg) translateY(-580px) rotate(-127.8deg); }
+        .oc-11 { transform: translate(-50%, -50%) rotate(179.2deg) translateY(-580px) rotate(-179.2deg); }
+        .oc-12 { transform: translate(-50%, -50%) rotate(230.7deg) translateY(-580px) rotate(-230.7deg); }
+        .oc-13 { transform: translate(-50%, -50%) rotate(282.1deg) translateY(-580px) rotate(-282.1deg); }
+        .oc-14 { transform: translate(-50%, -50%) rotate(333.5deg) translateY(-580px) rotate(-333.5deg); }
 
         /* Central Epicenter Content */
         .vortex-epicenter {
             position: relative;
             z-index: 20;
             max-width: 820px;
-            padding: 44px 36px;
+            padding: 46px 38px;
             text-align: center;
-            background: rgba(7, 7, 10, 0.88);
+            background: rgba(7, 7, 10, 0.9);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 20px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 60px rgba(56, 189, 248, 0.15);
+            box-shadow: 0 35px 85px rgba(0, 0, 0, 0.95), 0 0 65px rgba(56, 189, 248, 0.15);
+            transition: opacity 0.2s ease;
+        }
+
+        .epicenter-tag,
+        .epicenter-title,
+        .epicenter-sub,
+        .epicenter-desc,
+        .epicenter-actions,
+        .epicenter-guarantee .guarantee-item {
+            transition: transform 0.12s ease-out, opacity 0.12s ease-out, filter 0.12s ease-out;
+            will-change: transform, opacity, filter;
         }
 
         .epicenter-tag {
@@ -469,7 +649,7 @@
             font-size: 14.5px;
             color: var(--text-body);
             line-height: 1.65;
-            max-width: 650px;
+            max-width: 660px;
             margin: 0 auto 30px;
         }
 
@@ -541,14 +721,21 @@
         }
 
         /* ========================================================
-           CATALOG SECTION & TELEMETRY
+           CATALOG SECTION & FOREGROUND CONTAINER
+           Sliding over the blurred background storm smoothly
            ======================================================== */
         .catalog-section {
-            max-width: 1500px;
-            margin: 0 auto;
-            padding: 60px 24px 90px;
             position: relative;
             z-index: 10;
+            max-width: 1550px;
+            margin: 0 auto;
+            padding: 60px 24px 90px;
+            background: rgba(5, 5, 7, 0.78);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px 24px 0 0;
+            box-shadow: 0 -30px 80px rgba(0, 0, 0, 0.95);
         }
 
         /* Search & Filter Dock */
@@ -1168,13 +1355,19 @@
 
         /* Responsive Breakpoints */
         @media (max-width: 900px) {
+            body {
+                padding-right: 0;
+            }
+            .hud-scroll-ruler-right {
+                display: none;
+            }
             .capabilities-grid {
                 grid-template-columns: 1fr;
             }
             .vortex-hero {
                 min-height: 720px;
             }
-            .vortex-ruler-right, .vortex-hud-corner {
+            .vortex-hud-corner {
                 display: none;
             }
             .templates-grid {
@@ -1199,6 +1392,32 @@
 
     <div class="ambient-glow"></div>
 
+    <!-- ========================================================
+         RIGHT-SIDE TECHNICAL HUD SCROLL RULER WITH SLIDING ROLLER
+         ======================================================== -->
+    <aside class="hud-scroll-ruler-right" id="hudScrollRuler" aria-hidden="true">
+        <div class="ruler-track-line"></div>
+        
+        <!-- The Dynamic Sliding Roller Needle & Readout -->
+        <div class="ruler-sliding-roller" id="rulerSlidingRoller">
+            <div class="roller-badge" id="rollerBadge">00%</div>
+            <div class="roller-needle"></div>
+        </div>
+
+        <!-- Continuous Vernier Ticks down the page -->
+        <div class="ruler-tick-item" data-pos="0"><div class="tick-mark long"></div><span class="tick-label">00</span></div>
+        <div class="ruler-tick-item" data-pos="10"><div class="tick-mark"></div><span class="tick-label">10</span></div>
+        <div class="ruler-tick-item" data-pos="20"><div class="tick-mark long"></div><span class="tick-label">20</span></div>
+        <div class="ruler-tick-item" data-pos="30"><div class="tick-mark"></div><span class="tick-label">30</span></div>
+        <div class="ruler-tick-item" data-pos="40"><div class="tick-mark long"></div><span class="tick-label">40</span></div>
+        <div class="ruler-tick-item" data-pos="50"><div class="tick-mark"></div><span class="tick-label">50</span></div>
+        <div class="ruler-tick-item" data-pos="60"><div class="tick-mark long"></div><span class="tick-label">60</span></div>
+        <div class="ruler-tick-item" data-pos="70"><div class="tick-mark"></div><span class="tick-label">70</span></div>
+        <div class="ruler-tick-item" data-pos="80"><div class="tick-mark long"></div><span class="tick-label">80</span></div>
+        <div class="ruler-tick-item" data-pos="90"><div class="tick-mark"></div><span class="tick-label">90</span></div>
+        <div class="ruler-tick-item" data-pos="100"><div class="tick-mark long"></div><span class="tick-label">99</span></div>
+    </aside>
+
     <!-- Top Technical Navigation -->
     <header class="site-nav">
         <div class="nav-container">
@@ -1222,16 +1441,9 @@
 
     <!-- ========================================================
          SPINNING STORM VORTEX HERO SECTION
+         (Continuous Spin • Zero Personal Data • Professional CV Modules)
          ======================================================== -->
-    <section class="vortex-hero">
-        <!-- Right Edge HUD Ruler (ArtCraft Radar markings) -->
-        <div class="vortex-ruler-right">
-            <div class="ruler-mark"><span>0</span><div class="ruler-tick"></div></div>
-            <div class="ruler-mark"><span>5</span><div class="ruler-tick"></div></div>
-            <div class="ruler-mark"><span>10</span><div class="ruler-tick"></div></div>
-            <div class="ruler-mark"><span>15</span><div class="ruler-tick"></div></div>
-        </div>
-
+    <section class="vortex-hero" id="vortexHero">
         <!-- Bottom Right HUD Metadata (ArtCraft style) -->
         <div class="vortex-hud-corner">
             <span>FEATURES</span>
@@ -1246,18 +1458,13 @@
             <div class="orbit-ring orbit-ring-2"></div>
             <div class="orbit-ring orbit-ring-3"></div>
             <div class="orbit-ring orbit-ring-4"></div>
-            <div class="orbit-ring orbit-ring-5"></div>
         </div>
 
-        <!-- Curved Glowing Neon Arc Tracks (Curved color streaks) -->
+        <!-- Curved Glowing Neon Arc Tracks -->
         <svg class="neon-arc-svg" viewBox="0 0 1500 1500" fill="none">
-            <!-- Blue neon arc -->
             <path d="M 750,200 A 550,550 0 0,1 1300,750" stroke="url(#arc-blue)" stroke-width="2.5" stroke-linecap="round" />
-            <!-- Purple neon arc -->
             <path d="M 750,1300 A 550,550 0 0,1 200,750" stroke="url(#arc-purple)" stroke-width="2.5" stroke-linecap="round" />
-            <!-- Inner Cyan arc -->
             <path d="M 750,380 A 370,370 0 0,1 1120,750" stroke="url(#arc-cyan)" stroke-width="2" stroke-linecap="round" />
-            <!-- Inner Emerald arc -->
             <path d="M 750,1120 A 370,370 0 0,1 380,750" stroke="url(#arc-emerald)" stroke-width="2" stroke-linecap="round" />
             <defs>
                 <linearGradient id="arc-blue" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1283,87 +1490,252 @@
             </defs>
         </svg>
 
-        <!-- The Rotating Storm Turntable with 14 Orbiting CV Template Cards -->
+        <!-- The Rotating Storm Turntable (Continuous 60 FPS Spin • Professional Vocabulary) -->
         <div class="vortex-storm-turntable" id="vortexTurntable">
-            <!-- Inner Orbit (Templates 1 - 7) -->
-            <a href="templates/template_01_minimalist.html" class="orbit-card oc-1" title="Template 01: Minimalist Classic">
-                <img src="templates/thumb_template_01_minimalist.png" alt="Template 01">
-                <div class="orbit-card-tag">#01 Minimalist</div>
-            </a>
-            <a href="templates/template_02_executive_legal.html" class="orbit-card oc-2" title="Template 02: Executive Legal">
-                <img src="templates/thumb_template_02_executive_legal.png" alt="Template 02">
-                <div class="orbit-card-tag">#02 Legal</div>
-            </a>
-            <a href="templates/template_03_editorial_warm.html" class="orbit-card oc-3" title="Template 03: Editorial Warm">
-                <img src="templates/thumb_template_03_editorial_warm.png" alt="Template 03">
-                <div class="orbit-card-tag">#03 Editorial</div>
-            </a>
-            <a href="templates/template_04_blue_sidebar.html" class="orbit-card oc-4" title="Template 04: Corporate Blue Sidebar">
-                <img src="templates/thumb_template_04_blue_sidebar.png" alt="Template 04">
-                <div class="orbit-card-tag">#04 Blue Sidebar</div>
-            </a>
-            <a href="templates/template_05_navy_banner.html" class="orbit-card oc-5" title="Template 05: Navy Top Banner">
-                <img src="templates/thumb_template_05_navy_banner.png" alt="Template 05">
-                <div class="orbit-card-tag">#05 Navy Banner</div>
-            </a>
-            <a href="templates/template_06_split_shaded.html" class="orbit-card oc-6" title="Template 06: Split Shaded Slate">
-                <img src="templates/thumb_template_06_split_shaded.png" alt="Template 06">
-                <div class="orbit-card-tag">#06 Split Slate</div>
-            </a>
-            <a href="templates/template_07_europass.html" class="orbit-card oc-7" title="Template 07: Europass Clean">
-                <img src="templates/thumb_template_07_europass.png" alt="Template 07">
-                <div class="orbit-card-tag">#07 Europass</div>
+            <!-- INNER ORBIT: Professional CV Components (Radius ~ 350px) -->
+            
+            <!-- Card 1: Executive Summary -->
+            <a href="#catalog" class="orbit-card oc-1" data-base-angle="0" data-radius="-350">
+                <span class="orbit-card-badge" style="color: var(--accent-cyan);">SUMMARY</span>
+                <div class="orbit-card-title">Executive Profile</div>
+                <div class="orbit-card-keywords">
+                    • Strategic Leadership<br>
+                    • Cross-Functional Ops<br>
+                    • Enterprise Growth<br>
+                    • KPI Optimization
+                </div>
+                <div class="orbit-card-footer">
+                    <span>SECTION 01</span>
+                    <span style="color: var(--accent-cyan);">CORE</span>
+                </div>
             </a>
 
-            <!-- Outer Orbit (Templates 8 - 14) -->
-            <a href="templates/template_08_vibrant_block.html" class="orbit-card oc-8" title="Template 08: Vibrant Modern Block">
-                <img src="templates/thumb_template_08_vibrant_block.png" alt="Template 08">
-                <div class="orbit-card-tag">#08 Vibrant Block</div>
+            <!-- Card 2: Technical Stack Matrix -->
+            <a href="#catalog" class="orbit-card oc-2" data-base-angle="51.4" data-radius="-350">
+                <span class="orbit-card-badge" style="color: var(--accent-emerald);">TECH STACK</span>
+                <div class="orbit-card-title">Core Skills Matrix</div>
+                <div class="orbit-card-keywords">
+                    TypeScript • Python • React • Cloud Architecture • Distributed Microservices
+                </div>
+                <div class="orbit-card-footer">
+                    <span>SECTION 02</span>
+                    <span style="color: var(--accent-emerald);">EXPANDABLE</span>
+                </div>
             </a>
-            <a href="templates/template_09_creative_studio.html" class="orbit-card oc-9" title="Template 09: Creative Studio">
-                <img src="templates/thumb_template_09_creative_studio.png" alt="Template 09">
-                <div class="orbit-card-tag">#09 Studio</div>
+
+            <!-- Card 3: Abstract Minimalist Wireframe -->
+            <a href="#catalog" class="orbit-card oc-3" data-base-angle="102.8" data-radius="-350">
+                <span class="orbit-card-badge" style="color: #ffffff;">ARCHITECTURE</span>
+                <div class="mini-cv-wireframe">
+                    <div class="wireframe-sidebar">
+                        <div class="wireframe-avatar"></div>
+                        <div class="wireframe-line"></div>
+                        <div class="wireframe-line" style="width: 75%;"></div>
+                    </div>
+                    <div class="wireframe-main">
+                        <div class="wireframe-line primary"></div>
+                        <div class="wireframe-line"></div>
+                        <div class="wireframe-line"></div>
+                        <div class="wireframe-line" style="width: 60%;"></div>
+                    </div>
+                </div>
+                <div class="orbit-card-footer">
+                    <span>A4 VECTOR</span>
+                    <span style="color: #ffffff;">300 DPI</span>
+                </div>
             </a>
-            <a href="templates/template_10_tech_teal.html" class="orbit-card oc-10" title="Template 10: Tech Teal Matrix">
-                <img src="templates/thumb_template_10_tech_teal.png" alt="Template 10">
-                <div class="orbit-card-tag">#10 Tech Teal</div>
+
+            <!-- Card 4: Work Experience Milestone -->
+            <a href="#catalog" class="orbit-card oc-4" data-base-angle="154.2" data-radius="-350">
+                <span class="orbit-card-badge" style="color: var(--accent-purple);">EXPERIENCE</span>
+                <div class="orbit-card-title">Career Milestones</div>
+                <div class="orbit-card-keywords">
+                    • Modernization (+34% efficiency)<br>
+                    • Scaled engineering teams across 4 continents
+                </div>
+                <div class="orbit-card-footer">
+                    <span>SECTION 03</span>
+                    <span style="color: var(--accent-purple);">RESULTS</span>
+                </div>
             </a>
-            <a href="templates/template_11_nordic_navy.html" class="orbit-card oc-11" title="Template 11: Nordic Minimalist Navy">
-                <img src="templates/thumb_template_11_nordic_navy.png" alt="Template 11">
-                <div class="orbit-card-tag">#11 Nordic Navy</div>
+
+            <!-- Card 5: Core Competencies -->
+            <a href="#catalog" class="orbit-card oc-5" data-base-angle="205.7" data-radius="-350">
+                <span class="orbit-card-badge" style="color: var(--accent-amber);">STRATEGY</span>
+                <div class="orbit-card-title">Competencies</div>
+                <div class="orbit-card-keywords">
+                    • Agile Governance<br>
+                    • Risk Mitigation<br>
+                    • Budget Allocation<br>
+                    • Stakeholder Alignment
+                </div>
+                <div class="orbit-card-footer">
+                    <span>SECTION 04</span>
+                    <span style="color: var(--accent-amber);">METRIC</span>
+                </div>
             </a>
-            <a href="templates/template_12_corporate_slate.html" class="orbit-card oc-12" title="Template 12: Corporate Slate">
-                <img src="templates/thumb_template_12_corporate_slate.png" alt="Template 12">
-                <div class="orbit-card-tag">#12 Corporate Slate</div>
+
+            <!-- Card 6: Academic & Honors -->
+            <a href="#catalog" class="orbit-card oc-6" data-base-angle="257.1" data-radius="-350">
+                <span class="orbit-card-badge" style="color: var(--accent-cyan);">EDUCATION</span>
+                <div class="orbit-card-title">Credentials</div>
+                <div class="orbit-card-keywords">
+                    • Master of Science (Distinction)<br>
+                    • Global Certification<br>
+                    • Advanced Fellow
+                </div>
+                <div class="orbit-card-footer">
+                    <span>SECTION 05</span>
+                    <span style="color: var(--accent-cyan);">HONORS</span>
+                </div>
             </a>
-            <a href="templates/template_13_sage_elegance.html" class="orbit-card oc-13" title="Template 13: Sage Elegance">
-                <img src="templates/thumb_template_13_sage_elegance.png" alt="Template 13">
-                <div class="orbit-card-tag">#13 Sage Luxury</div>
+
+            <!-- Card 7: Split Slate Wireframe -->
+            <a href="#catalog" class="orbit-card oc-7" data-base-angle="308.5" data-radius="-350">
+                <span class="orbit-card-badge" style="color: var(--accent-blue);">HIERARCHY</span>
+                <div class="mini-cv-wireframe">
+                    <div class="wireframe-sidebar" style="background: rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.3);">
+                        <div class="wireframe-avatar" style="border-radius: 2px;"></div>
+                        <div class="wireframe-line"></div>
+                        <div class="wireframe-line"></div>
+                    </div>
+                    <div class="wireframe-main">
+                        <div class="wireframe-line" style="background: #8b5cf6; width: 80%; height: 3.5px;"></div>
+                        <div class="wireframe-line"></div>
+                        <div class="wireframe-line"></div>
+                    </div>
+                </div>
+                <div class="orbit-card-footer">
+                    <span>GRID SYSTEM</span>
+                    <span style="color: var(--accent-blue);">SPLIT</span>
+                </div>
             </a>
-            <a href="templates/template_14_diagonal_modern.html" class="orbit-card oc-14" title="Template 14: Modern Diagonal">
-                <img src="templates/thumb_template_14_diagonal_modern.png" alt="Template 14">
-                <div class="orbit-card-tag">#14 Diagonal Cut</div>
+
+            <!-- OUTER ORBIT: Advanced Studio Capabilities (Radius ~ 580px) -->
+
+            <!-- Card 8: Dynamic Category Creator -->
+            <a href="#catalog" class="orbit-card oc-8" data-base-angle="25" data-radius="-580">
+                <span class="orbit-card-badge" style="color: var(--accent-emerald);">ENGINE</span>
+                <div class="orbit-card-title">[＋] Categories</div>
+                <div class="orbit-card-keywords">
+                    Add custom sections:<br>
+                    • Key Projects<br>
+                    • Certifications<br>
+                    • Global Publications<br>
+                    • Industry Awards
+                </div>
+                <div class="orbit-card-footer">
+                    <span>DYNAMIC</span>
+                    <span style="color: var(--accent-emerald);">IN-PLACE</span>
+                </div>
+            </a>
+
+            <!-- Card 9: Auto-Contrast Sensing -->
+            <a href="#catalog" class="orbit-card oc-9" data-base-angle="76.4" data-radius="-580">
+                <span class="orbit-card-badge" style="color: var(--accent-cyan);">CONTRAST</span>
+                <div class="orbit-card-title">Luminance Core</div>
+                <div class="orbit-card-keywords">
+                    Calculates background luminescence in real-time. Guarantees 100% crisp text readability across all dark/light themes.
+                </div>
+                <div class="orbit-card-footer">
+                    <span>AUTOMATIC</span>
+                    <span style="color: var(--accent-cyan);">LUMEN</span>
+                </div>
+            </a>
+
+            <!-- Card 10: Quantified Impact Metrics -->
+            <a href="#catalog" class="orbit-card oc-10" data-base-angle="127.8" data-radius="-580">
+                <span class="orbit-card-badge" style="color: var(--accent-purple);">IMPACT</span>
+                <div class="orbit-card-title">Quantified Lift</div>
+                <div class="orbit-card-keywords">
+                    <strong style="color: #ffffff; font-size: 14px;">+42%</strong> Efficiency<br>
+                    <strong style="color: #ffffff; font-size: 14px;">$2.8M</strong> Cost Savings<br>
+                    <strong style="color: #ffffff; font-size: 14px;">99.8%</strong> SLA Delivery
+                </div>
+                <div class="orbit-card-footer">
+                    <span>DATA-BACKED</span>
+                    <span style="color: var(--accent-purple);">PROVEN</span>
+                </div>
+            </a>
+
+            <!-- Card 11: Creative Studio Wireframe -->
+            <a href="#catalog" class="orbit-card oc-11" data-base-angle="179.2" data-radius="-580">
+                <span class="orbit-card-badge" style="color: var(--accent-amber);">STUDIO</span>
+                <div class="mini-cv-wireframe">
+                    <div class="wireframe-main" style="width: 100%;">
+                        <div class="wireframe-avatar" style="width: 24px; height: 24px; margin: 0 auto 6px;"></div>
+                        <div class="wireframe-line" style="background: var(--accent-amber); width: 70%; margin: 0 auto 4px;"></div>
+                        <div class="wireframe-line"></div>
+                        <div class="wireframe-line"></div>
+                    </div>
+                </div>
+                <div class="orbit-card-footer">
+                    <span>EDITORIAL</span>
+                    <span style="color: var(--accent-amber);">LUXURY</span>
+                </div>
+            </a>
+
+            <!-- Card 12: Global Multilingual -->
+            <a href="#catalog" class="orbit-card oc-12" data-base-angle="230.7" data-radius="-580">
+                <span class="orbit-card-badge" style="color: var(--accent-emerald);">LANGUAGES</span>
+                <div class="orbit-card-title">Global Fluency</div>
+                <div class="orbit-card-keywords">
+                    • English (Native)<br>
+                    • French (Professional)<br>
+                    • German (Working)<br>
+                    • Spanish (Conversational)
+                </div>
+                <div class="orbit-card-footer">
+                    <span>MULTILINGUAL</span>
+                    <span style="color: var(--accent-emerald);">GLOBAL</span>
+                </div>
+            </a>
+
+            <!-- Card 13: 300 DPI Vector PDF Engine -->
+            <a href="#catalog" class="orbit-card oc-13" data-base-angle="282.1" data-radius="-580">
+                <span class="orbit-card-badge" style="color: var(--accent-cyan);">PDF EXPORT</span>
+                <div class="orbit-card-title">Strict A4 Spec</div>
+                <div class="orbit-card-keywords">
+                    210mm × 297mm vector rendering. 100% scalable typography. Output ~1.5 MB with zero blur.
+                </div>
+                <div class="orbit-card-footer">
+                    <span>CALIBRATED</span>
+                    <span style="color: var(--accent-cyan);">VECTOR</span>
+                </div>
+            </a>
+
+            <!-- Card 14: Zero-Cloud Privacy Guarantee -->
+            <a href="#catalog" class="orbit-card oc-14" data-base-angle="333.5" data-radius="-580">
+                <span class="orbit-card-badge" style="color: var(--accent-emerald);">SECURITY</span>
+                <div class="orbit-card-title">Zero Cloud Leaks</div>
+                <div class="orbit-card-keywords">
+                    100% Client-Side. No account registration. No password. Edits reside exclusively in your local browser memory.
+                </div>
+                <div class="orbit-card-footer">
+                    <span>PRIVACY</span>
+                    <span style="color: var(--accent-emerald);">SAFE</span>
+                </div>
             </a>
         </div>
 
         <!-- Epicenter Central Content (Foreground Focus) -->
-        <div class="vortex-epicenter">
-            <div class="epicenter-tag">
+        <div class="vortex-epicenter" id="vortexEpicenter">
+            <div class="epicenter-tag" id="scatTag">
                 <span class="tag-pulse"></span>
                 <span>OPEN STUDIO ARCHITECTURE • V2.4</span>
             </div>
 
-            <h1 class="epicenter-title">CV PRO BY MC BEN</h1>
+            <h1 class="epicenter-title" id="scatTitle">CV PRO BY MC BEN</h1>
 
-            <div class="epicenter-sub">
+            <div class="epicenter-sub" id="scatSub">
                 Precision Resumes <span class="serif-accent">for Self-Creators</span>
             </div>
 
-            <p class="epicenter-desc">
+            <p class="epicenter-desc" id="scatDesc">
                 An open, studio-grade CV suite built for ambitious self-creators. Freely customize typography, fine-tune photo geometry, expand text categories, add in-place skills and experience slots, and export publication-ready A4 vector PDFs—tailored entirely to your vision.
             </p>
 
-            <div class="epicenter-actions">
+            <div class="epicenter-actions" id="scatActions">
                 <a href="#catalog" class="cta-btn-main primary">
                     <span>⚡ EXPLORE 14 TEMPLATES</span>
                 </a>
@@ -1372,22 +1744,25 @@
                 </a>
             </div>
 
-            <div class="epicenter-guarantee">
-                <div class="guarantee-item">
+            <div class="epicenter-guarantee" id="scatGuarantee">
+                <div class="guarantee-item" id="scatG1">
                     <span style="color: var(--accent-emerald);">✓</span>
                     <span>100% Client-Side Privacy</span>
                 </div>
-                <div class="guarantee-item">
+                <div class="guarantee-item" id="scatG2">
                     <span style="color: var(--accent-cyan);">✓</span>
                     <span>No Signup or Passwords</span>
                 </div>
-                <div class="guarantee-item">
+                <div class="guarantee-item" id="scatG3">
                     <span style="color: var(--accent-purple);">✓</span>
                     <span>300 DPI Vector PDF Export</span>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Spacer to allow natural scroll over the fixed background storm -->
+    <div class="vortex-hero-spacer"></div>
 
     <!-- ========================================================
          MAIN TEMPLATE CATALOG
@@ -1795,6 +2170,194 @@
             renderTemplates();
         }
 
+        // ========================================================
+        // DYNAMIC HUD SCROLL RULER & PARALLAX BACKDROP CONTROLLER
+        // ========================================================
+        function updateScrollRulerAndParallax() {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = docHeight > 0 ? Math.min(Math.max(scrollTop / docHeight, 0), 1) : 0;
+            
+            // 1. Update Right-Side Ruler & Sliding Needle
+            const ruler = document.getElementById('hudScrollRuler');
+            if (ruler) {
+                const rulerHeight = ruler.clientHeight - 60; // offset padding
+                const roller = document.getElementById('rulerSlidingRoller');
+                const rollerBadge = document.getElementById('rollerBadge');
+                
+                const rollerY = scrollPercent * rulerHeight;
+                if (roller) {
+                    roller.style.transform = `translateY(${rollerY}px)`;
+                }
+                if (rollerBadge) {
+                    rollerBadge.textContent = `${Math.round(scrollPercent * 100).toString().padStart(2, '0')}%`;
+                }
+
+                // Dynamically highlight ticks as roller passes over them
+                const currentPos = scrollPercent * 100;
+                document.querySelectorAll('.ruler-tick-item').forEach(tick => {
+                    const pos = parseInt(tick.getAttribute('data-pos'), 10);
+                    if (Math.abs(currentPos - pos) <= 6) {
+                        tick.classList.add('active-glow');
+                    } else {
+                        tick.classList.remove('active-glow');
+                    }
+                });
+            }
+
+            // 2. Parallax Backdrop Effect & Central Epicenter Scattering Animation
+            const hero = document.getElementById('vortexHero');
+            const epicenter = document.getElementById('vortexEpicenter');
+            const scatTag = document.getElementById('scatTag');
+            const scatTitle = document.getElementById('scatTitle');
+            const scatSub = document.getElementById('scatSub');
+            const scatDesc = document.getElementById('scatDesc');
+            const scatActions = document.getElementById('scatActions');
+            const scatG1 = document.getElementById('scatG1');
+            const scatG2 = document.getElementById('scatG2');
+            const scatG3 = document.getElementById('scatG3');
+
+            if (hero && epicenter) {
+                // Background storm stays running, transitions to subtle blurry state
+                if (scrollTop > 40) {
+                    hero.classList.add('scrolled-backdrop');
+                } else {
+                    hero.classList.remove('scrolled-backdrop');
+                }
+
+                // Scattering ratio (0 at top, 1 when scrolled ~260px)
+                const p = Math.min(Math.max(scrollTop / 260, 0), 1);
+
+                if (p >= 0.96) {
+                    epicenter.style.display = 'none';
+                    epicenter.style.pointerEvents = 'none';
+                } else {
+                    epicenter.style.display = 'block';
+                    epicenter.style.pointerEvents = 'auto';
+                    epicenter.style.opacity = (1 - p * 1.15).toFixed(3);
+                    epicenter.style.boxShadow = `0 35px 85px rgba(0, 0, 0, ${(0.95 * (1 - p)).toFixed(2)})`;
+                    epicenter.style.borderColor = `rgba(255, 255, 255, ${(0.12 * (1 - p)).toFixed(2)})`;
+                    epicenter.style.background = `rgba(7, 7, 10, ${(0.9 * (1 - p)).toFixed(2)})`;
+
+                    // Individual scattering transforms (flying outward):
+                    if (scatTag) {
+                        scatTag.style.transform = `translateY(${-p * 85}px) scale(${(1 - p * 0.2).toFixed(2)})`;
+                        scatTag.style.opacity = Math.max(0, 1 - p * 1.3).toFixed(2);
+                        scatTag.style.filter = `blur(${(p * 5).toFixed(1)}px)`;
+                    }
+                    if (scatTitle) {
+                        scatTitle.style.transform = `translateY(${-p * 50}px) scale(${(1 + p * 0.12).toFixed(2)})`;
+                        scatTitle.style.letterSpacing = `${(p * 8).toFixed(1)}px`;
+                        scatTitle.style.opacity = Math.max(0, 1 - p * 1.2).toFixed(2);
+                        scatTitle.style.filter = `blur(${(p * 7).toFixed(1)}px)`;
+                    }
+                    if (scatSub) {
+                        scatSub.style.transform = `translate(${-p * 110}px, ${-p * 25}px) rotate(${-p * 5}deg)`;
+                        scatSub.style.opacity = Math.max(0, 1 - p * 1.2).toFixed(2);
+                        scatSub.style.filter = `blur(${(p * 5).toFixed(1)}px)`;
+                    }
+                    if (scatDesc) {
+                        scatDesc.style.transform = `translate(${p * 110}px, ${p * 25}px) rotate(${p * 4}deg)`;
+                        scatDesc.style.opacity = Math.max(0, 1 - p * 1.3).toFixed(2);
+                        scatDesc.style.filter = `blur(${(p * 5).toFixed(1)}px)`;
+                    }
+                    if (scatActions) {
+                        scatActions.style.transform = `translateY(${p * 75}px) scale(${(1 - p * 0.2).toFixed(2)})`;
+                        scatActions.style.opacity = Math.max(0, 1 - p * 1.4).toFixed(2);
+                        scatActions.style.filter = `blur(${(p * 4).toFixed(1)}px)`;
+                    }
+                    if (scatG1) {
+                        scatG1.style.transform = `translate(${-p * 75}px, ${p * 45}px) rotate(${-p * 7}deg)`;
+                        scatG1.style.opacity = Math.max(0, 1 - p * 1.4).toFixed(2);
+                    }
+                    if (scatG2) {
+                        scatG2.style.transform = `translateY(${p * 65}px)`;
+                        scatG2.style.opacity = Math.max(0, 1 - p * 1.4).toFixed(2);
+                    }
+                    if (scatG3) {
+                        scatG3.style.transform = `translate(${p * 75}px, ${p * 45}px) rotate(${p * 7}deg)`;
+                        scatG3.style.opacity = Math.max(0, 1 - p * 1.4).toFixed(2);
+                    }
+                }
+            }
+        }
+
+        window.addEventListener('scroll', updateScrollRulerAndParallax, { passive: true });
+        window.addEventListener('resize', updateScrollRulerAndParallax, { passive: true });
+
+        // ========================================================
+        // ORBIT CARDS HOVER INSPECTION CONTROLLER
+        // Storm KEEPS CIRCLING (never stops!).
+        // Active card stays straight (0deg level) in real time while hovered.
+        // On mouse leave, returns immediately to normal storm rotation.
+        // ========================================================
+        function getTurntableAngle(el) {
+            const st = window.getComputedStyle(el, null);
+            const tr = st.getPropertyValue("transform");
+            if (tr && tr !== "none") {
+                const m = tr.match(/matrix\((.+)\)/);
+                if (m) {
+                    const values = m[1].split(/,\s*/);
+                    const a = parseFloat(values[0]);
+                    const b = parseFloat(values[1]);
+                    return Math.atan2(b, a) * (180 / Math.PI);
+                }
+            }
+            return 0;
+        }
+
+        function initOrbitCardHover() {
+            const turntable = document.getElementById('vortexTurntable');
+            const orbitCards = document.querySelectorAll('.orbit-card');
+            if (!turntable || orbitCards.length === 0) return;
+
+            let activeCard = null;
+            let hoverRafId = null;
+
+            function keepActiveCardStraight() {
+                if (!activeCard) return;
+                const curTurntableAngle = getTurntableAngle(turntable);
+                const baseAngle = parseFloat(activeCard.getAttribute('data-base-angle')) || 0;
+                const radius = parseFloat(activeCard.getAttribute('data-radius')) || -350;
+
+                // Dynamic counter-rotation: net screen angle is always exactly 0deg (straight!)
+                const counterRot = - (baseAngle + curTurntableAngle);
+                activeCard.style.transform = `translate(-50%, -50%) rotate(${baseAngle}deg) translateY(${radius}px) rotate(${counterRot}deg) scale(1.22)`;
+
+                hoverRafId = requestAnimationFrame(keepActiveCardStraight);
+            }
+
+            orbitCards.forEach(card => {
+                card.addEventListener('mouseenter', function () {
+                    // DO NOT STOP CIRCLING! The turntable continues spinning continuously.
+                    activeCard = this;
+                    this.classList.add('straight-hover');
+                    if (hoverRafId) cancelAnimationFrame(hoverRafId);
+                    hoverRafId = requestAnimationFrame(keepActiveCardStraight);
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    if (activeCard === this) {
+                        if (hoverRafId) cancelAnimationFrame(hoverRafId);
+                        hoverRafId = null;
+                        activeCard = null;
+                    }
+                    this.style.transform = '';
+                    this.classList.remove('straight-hover');
+                });
+            });
+
+            window.addEventListener('blur', function () {
+                if (activeCard) {
+                    if (hoverRafId) cancelAnimationFrame(hoverRafId);
+                    hoverRafId = null;
+                    activeCard.style.transform = '';
+                    activeCard.classList.remove('straight-hover');
+                    activeCard = null;
+                }
+            });
+        }
+
         // Welcome Modal Logic
         function openWelcomeModal() {
             document.getElementById('welcomeModal').classList.add('active');
@@ -1830,6 +2393,8 @@
         // Auto show modal on first visit
         window.addEventListener('DOMContentLoaded', () => {
             renderTemplates();
+            updateScrollRulerAndParallax();
+            initOrbitCardHover();
 
             try {
                 const hasSeen = localStorage.getItem('cv_pro_welcome_seen');
