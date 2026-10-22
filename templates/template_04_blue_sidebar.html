@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template 4 - Blue Sidebar Executive CV</title>
+    <link rel="stylesheet" href="cv_customizer.css">
+    <style>
+        :root {
+            --primary-accent: #1e3a8a;
+            --secondary-accent: #2563eb;
+            --sidebar-bg: #dbeafe;
+            --page-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --headings-color: #0f172a;
+            --font-size-name: 26px;
+            --font-size-heading: 14px;
+            --font-size-base: 12px;
+        }
+
+        .cv-grid {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Sidebar (Left) */
+        .sidebar {
+            width: 34%;
+            background-color: var(--sidebar-bg);
+            padding: 34px 24px 26px 26px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            border-right: 1px solid rgba(30, 58, 138, 0.1);
+        }
+
+        .sidebar-header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .photo-wrapper {
+            margin-bottom: 4px;
+        }
+
+        .applicant-name {
+            font-size: var(--font-size-name);
+            font-weight: 800;
+            color: var(--primary-accent);
+            letter-spacing: 0.5px;
+            line-height: 1.15;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .applicant-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--secondary-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 2px 0 0 0;
+        }
+
+        .sidebar-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .sidebar-title {
+            font-size: var(--font-size-heading);
+            font-weight: 700;
+            color: var(--primary-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--secondary-accent);
+            padding-bottom: 4px;
+            margin: 0;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            font-size: 11.5px;
+            color: var(--text-secondary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1.35;
+            word-break: break-word;
+        }
+
+        .contact-icon {
+            width: 14px;
+            height: 14px;
+            color: var(--primary-accent);
+            flex-shrink: 0;
+        }
+
+        /* Skills with progress bars */
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-bottom: 5px;
+        }
+
+        .skill-name {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 5px;
+            background: rgba(30, 58, 138, 0.15);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--primary-accent);
+            border-radius: 3px;
+        }
+
+        /* Education sidebar entries */
+        .edu-entry {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-bottom: 8px;
+        }
+
+        .edu-degree {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .edu-school {
+            font-size: 11.5px;
+            color: var(--text-secondary);
+        }
+
+        .edu-year {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Main Content (Right) */
+        .main-content {
+            width: 66%;
+            padding: 34px 32px 26px 32px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            background-color: var(--page-bg);
+        }
+
+        .content-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .section-header {
+            font-size: var(--font-size-heading);
+            font-weight: 700;
+            color: var(--primary-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 4px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-header::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--secondary-accent);
+            border-radius: 2px;
+        }
+
+        .summary-text {
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* Timeline entries */
+        .timeline-entry {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 12px;
+            border-left: 2px solid #e2e8f0;
+        }
+
+        .timeline-entry::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--secondary-accent);
+        }
+
+        .entry-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .entry-role {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--headings-color);
+            margin: 0;
+        }
+
+        .entry-date {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--secondary-accent);
+        }
+
+        .entry-company {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .entry-bullets {
+            list-style: disc;
+            padding-left: 16px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+    </style>
+</head>
+<body data-template-id="template_04_blue_sidebar">
+
+<div class="page-container">
+    <div class="cv-page cv-paper-bg" id="cvPage">
+        <div class="cv-grid">
+            <!-- Left Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <div class="photo-wrapper">
+                        <div class="photo-frame">
+                            <img id="cvProfileImg" src="dummy_profile.jpg" alt="Profile Picture">
+                        </div>
+                    </div>
+                    <div>
+                        <h1 class="applicant-name" contenteditable="false">ALEX<br>MORGAN</h1>
+                        <p class="applicant-title" contenteditable="false">Senior Project Lead</p>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title" contenteditable="false">CONTACT</h3>
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span contenteditable="false">alex.morgan@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span contenteditable="false">+1 (555) 234-5678</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <span contenteditable="false">New York, NY, United States</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                            <span contenteditable="false">linkedin.com/in/alex-morgan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title" contenteditable="false">EDUCATION</h3>
+                    <div class="edu-entry">
+                        <div class="edu-degree" contenteditable="false">M.S. Project Management</div>
+                        <div class="edu-school" contenteditable="false">Columbia University</div>
+                        <div class="edu-year" contenteditable="false">2016 — 2018</div>
+                    </div>
+                    <div class="edu-entry">
+                        <div class="edu-degree" contenteditable="false">B.S. Business Administration</div>
+                        <div class="edu-school" contenteditable="false">Boston University</div>
+                        <div class="edu-year" contenteditable="false">2012 — 2016</div>
+                    </div>
+                </div>
+
+                <!-- Skills with visual bars -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title" contenteditable="false">SKILLS</h3>
+                    <div class="skill-item">
+                        <div class="skill-name"><span contenteditable="false">Agile & Scrum Delivery</span><span>95%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span contenteditable="false">Budgeting & Forecasting</span><span>90%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span contenteditable="false">Stakeholder Management</span><span>92%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 92%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span contenteditable="false">Process Optimization</span><span>88%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span contenteditable="false">Cross-Functional Leadership</span><span>94%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 94%;"></div></div>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title" contenteditable="false">LANGUAGES</h3>
+                    <div class="contact-list">
+                        <div class="contact-item"><strong>English:</strong> Native / Bilingual</div>
+                        <div class="contact-item"><strong>Spanish:</strong> Professional Working</div>
+                        <div class="contact-item"><strong>German:</strong> Intermediate</div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Profile Summary -->
+                <section class="content-section">
+                    <h2 class="section-header" contenteditable="false">PROFILE</h2>
+                    <p class="summary-text" contenteditable="false">
+                        Accomplished Operations and Project Management professional with 7+ years of experience leading cross-functional teams, optimizing business workflows, and executing strategic initiatives. Demonstrated expertise in budgeting, stakeholder communication, and performance analytics. Adept at driving operational excellence while maintaining high quality standards and cost efficiency.
+                    </p>
+                </section>
+
+                <!-- Experience -->
+                <section class="content-section">
+                    <h2 class="section-header" contenteditable="false">WORK EXPERIENCE</h2>
+
+                    <div class="timeline-entry item-wrapper">
+                        <div class="entry-top">
+                            <h4 class="entry-role" contenteditable="false">Senior Operations Lead</h4>
+                            <span class="entry-date" contenteditable="false">2021 — PRESENT</span>
+                        </div>
+                        <div class="entry-company" contenteditable="false">Apex Global Enterprise • New York, NY</div>
+                        <ul class="entry-bullets">
+                            <li contenteditable="false">Spearheaded operational transformation across 4 regional departments, improving delivery speed by 28%.</li>
+                            <li contenteditable="false">Managed an annual departmental budget of $4.2M, consistently delivering projects 8% under budget.</li>
+                            <li contenteditable="false">Introduced automated KPI reporting dashboards reducing weekly manual status reporting by 14 hours.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-entry item-wrapper">
+                        <div class="entry-top">
+                            <h4 class="entry-role" contenteditable="false">Project Manager</h4>
+                            <span class="entry-date" contenteditable="false">2018 — 2021</span>
+                        </div>
+                        <div class="entry-company" contenteditable="false">Beacon Strategic Solutions • Boston, MA</div>
+                        <ul class="entry-bullets">
+                            <li contenteditable="false">Directed 15+ concurrent enterprise client rollouts with an average client satisfaction rating of 96%.</li>
+                            <li contenteditable="false">Facilitated sprint planning, retrospectives, and cross-functional alignment sessions for 25 team members.</li>
+                            <li contenteditable="false">Instituted comprehensive risk mitigation frameworks that decreased critical scope delays by 35%.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-entry item-wrapper">
+                        <div class="entry-top">
+                            <h4 class="entry-role" contenteditable="false">Associate Project Coordinator</h4>
+                            <span class="entry-date" contenteditable="false">2016 — 2018</span>
+                        </div>
+                        <div class="entry-company" contenteditable="false">Crestline Logistics Group • Boston, MA</div>
+                        <ul class="entry-bullets">
+                            <li contenteditable="false">Supported senior project managers in tracking project milestones, documentation, and stakeholder communications.</li>
+                            <li contenteditable="false">Coordinated cross-department vendor evaluations and logistics schedule alignments.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Key Achievements -->
+                <section class="content-section">
+                    <h2 class="section-header" contenteditable="false">KEY ACHIEVEMENTS</h2>
+                    <div class="timeline-entry item-wrapper" style="border-left-color: transparent; padding-left: 0;">
+                        <ul class="entry-bullets">
+                            <li contenteditable="false"><strong>PMP Certified:</strong> Project Management Professional credentialed by PMI (2019).</li>
+                            <li contenteditable="false"><strong>Excellence in Leadership Award:</strong> Recognized for top-tier cross-department collaboration at Apex Global (2023).</li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</div>
+
+<script src="cv_customizer.js"></script>
+</body>
+</html>

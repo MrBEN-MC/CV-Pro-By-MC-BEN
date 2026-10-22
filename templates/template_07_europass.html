@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template 4 - Official Europass CV</title>
+    <link rel="stylesheet" href="cv_customizer.css">
+    <style>
+        :root {
+            --primary-accent: #2563eb;
+            --secondary-accent: #0284c7;
+            --sidebar-bg: #e6f0fa;
+            --page-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --headings-color: #0f172a;
+            --font-size-name: 24px;
+            --font-size-heading: 13px;
+            --font-size-base: 12px;
+            --line-height-base: 1.45;
+        }
+
+        .europass-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background-color: var(--page-bg);
+        }
+
+        /* Europass Header */
+        .europass-header {
+            background-color: var(--sidebar-bg);
+            padding: 24px 36px 20px 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .header-profile-block {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-text-block {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .applicant-name {
+            font-size: var(--font-size-name);
+            font-weight: 800;
+            color: var(--headings-color);
+            margin: 0;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .applicant-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin: 0 0 6px 0;
+        }
+
+        .contact-inline-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .contact-inline-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .contact-icon-mini {
+            width: 12px;
+            height: 12px;
+            color: var(--primary-accent);
+        }
+
+        /* Europass Official Logo Badge */
+        .europass-logo-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .eu-flag {
+            width: 32px;
+            height: 22px;
+            background: #003399;
+            border-radius: 2px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffcc00;
+            font-size: 8px;
+            letter-spacing: 1px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .europass-text-logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: #6b21a8;
+            letter-spacing: -0.5px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* Body Split */
+        .europass-body {
+            display: flex;
+            flex-grow: 1;
+            padding: 24px 36px;
+            gap: 28px;
+            box-sizing: border-box;
+        }
+
+        .col-main-eu {
+            width: 66%;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            box-sizing: border-box;
+        }
+
+        .col-side-eu {
+            width: 34%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            border-left: 1px solid #e2e8f0;
+            padding-left: 24px;
+            box-sizing: border-box;
+        }
+
+        /* Section Headings with Underline Bar */
+        .eu-section-heading {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: var(--font-size-heading);
+            font-weight: 700;
+            color: var(--headings-color);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin: 0;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .eu-section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #cbd5e1;
+        }
+
+        .eu-heading-accent-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 45px;
+            height: 2px;
+            background-color: var(--primary-accent);
+            z-index: 2;
+        }
+
+        .eu-heading-icon {
+            width: 14px;
+            height: 14px;
+            color: var(--primary-accent);
+        }
+
+        .eu-about-copy {
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            line-height: var(--line-height-base);
+            margin: 6px 0 0 0;
+        }
+
+        /* Vertical Timeline */
+        .timeline-container {
+            position: relative;
+            padding-left: 16px;
+            margin-top: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            bottom: 6px;
+            left: 4px;
+            width: 2px;
+            background-color: var(--primary-accent);
+        }
+
+        .timeline-node {
+            position: relative;
+        }
+
+        .timeline-node::before {
+            content: '';
+            position: absolute;
+            left: -16px;
+            top: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            border: 2px solid var(--primary-accent);
+            z-index: 2;
+        }
+
+        .node-date-location {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--headings-color);
+            margin-bottom: 2px;
+        }
+
+        .node-title-company {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--headings-color);
+            margin: 0 0 4px 0;
+        }
+
+        .node-company {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .node-bullets {
+            list-style: disc;
+            padding-left: 16px;
+            margin: 4px 0 0 0;
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        /* Skill Pill Badges */
+        .skills-pill-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            margin-top: 6px;
+        }
+
+        .skill-pill {
+            display: inline-block;
+            border: 1px solid #94a3b8;
+            border-radius: 20px;
+            padding: 5px 14px;
+            font-size: 11.5px;
+            font-weight: 500;
+            color: var(--text-primary);
+            background: #ffffff;
+            text-align: center;
+        }
+
+        /* Language Block */
+        .language-block {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 11.5px;
+            margin-top: 6px;
+        }
+
+        .lang-row {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+        }
+
+        .lang-name {
+            font-weight: 700;
+            color: var(--headings-color);
+        }
+
+        .social-link {
+            font-size: 11.5px;
+            color: var(--primary-accent);
+            text-decoration: underline;
+            margin-top: 4px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body data-template-id="template_07_europass">
+
+<div class="cv-viewport">
+    <div class="cv-page">
+        <div class="europass-container">
+            <!-- Header -->
+            <header class="europass-header">
+                <div class="header-profile-block">
+                    <div class="photo-wrapper">
+                        <div class="photo-frame">
+                            <img id="cvProfileImg" src="dummy_profile.jpg" alt="Daniel Gallego">
+                        </div>
+                    </div>
+                    <div class="header-text-block">
+                        <h1 class="applicant-name" contenteditable="false">DANIEL GALLEGO</h1>
+                        <div class="applicant-title" contenteditable="false">Senior Project Manager</div>
+                        <div class="contact-inline-row">
+                            <div class="contact-inline-item">
+                                <svg class="contact-icon-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                <span contenteditable="false">(+49) 30 9876543</span>
+                            </div>
+                            <div class="contact-inline-item">
+                                <svg class="contact-icon-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                <span contenteditable="false">d.gallego@example.com</span>
+                            </div>
+                            <div class="contact-inline-item">
+                                <svg class="contact-icon-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                <span contenteditable="false">Kantstrasse 14, 10623, Berlin, Germany</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+
+            <!-- Body Grid -->
+            <div class="europass-body">
+                <!-- Main Left Column -->
+                <div class="col-main-eu">
+                    <!-- About Me -->
+                    <section>
+                        <div class="eu-section-heading">
+                            <svg class="eu-heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                            <span contenteditable="false">ABOUT ME</span>
+                            <div class="eu-heading-accent-bar"></div>
+                        </div>
+                        <p class="eu-about-copy" contenteditable="false">
+                            Experienced and dependable Senior Project Manager with vast expertise coordinating international engineering projects, logistics, and operational programs. Adept in leading cross-functional teams, optimizing technical workflows, and ensuring quality, budget, and safety compliance across European standards.
+                        </p>
+                    </section>
+
+                    <!-- Experience -->
+                    <section>
+                        <div class="eu-section-heading">
+                            <svg class="eu-heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                            <span contenteditable="false">EXPERIENCE</span>
+                            <div class="eu-heading-accent-bar"></div>
+                        </div>
+
+                        <div class="timeline-container">
+                            <div class="timeline-node item-wrapper">
+                                <div class="node-date-location" contenteditable="false">09/2019 – CURRENT | Berlin, Germany</div>
+                                <h4 class="node-title-company">
+                                    <span contenteditable="false">Senior Project Manager</span> | <span class="node-company" contenteditable="false">Siemens AG</span>
+                                </h4>
+                                <ul class="node-bullets">
+                                    <li contenteditable="false">Managing international engineering projects in the energy sector (budgets up to EUR 5M).</li>
+                                    <li contenteditable="false">Coordinating cross-functional teams (20+ members) across Germany, France, and Poland.</li>
+                                    <li contenteditable="false">Optimizing internal workflows, resulting in a 15% reduction in operational costs.</li>
+                                </ul>
+                            </div>
+
+                            <div class="timeline-node item-wrapper">
+                                <div class="node-date-location" contenteditable="false">08/2014 – 08/2019 | Berlin, Germany</div>
+                                <h4 class="node-title-company">
+                                    <span contenteditable="false">Operations Specialist</span> | <span class="node-company" contenteditable="false">Deutsche Bahn</span>
+                                </h4>
+                                <ul class="node-bullets">
+                                    <li contenteditable="false">Analysis and planning of complex logistical routes across Northern Europe.</li>
+                                    <li contenteditable="false">Implementation of a new digital cargo monitoring and tracking system.</li>
+                                    <li contenteditable="false">Preparing operational efficiency reports and strategic presentations for senior management.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Education -->
+                    <section>
+                        <div class="eu-section-heading">
+                            <svg class="eu-heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                            <span contenteditable="false">EDUCATION</span>
+                            <div class="eu-heading-accent-bar"></div>
+                        </div>
+
+                        <div class="timeline-container">
+                            <div class="timeline-node item-wrapper">
+                                <div class="node-date-location" contenteditable="false">09/2012 – 06/2014 | Berlin, Germany</div>
+                                <h4 class="node-title-company" contenteditable="false">Master of Science: Engineering Management</h4>
+                                <div class="node-company" contenteditable="false">Technical University of Berlin (TU Berlin)</div>
+                            </div>
+
+                            <div class="timeline-node item-wrapper">
+                                <div class="node-date-location" contenteditable="false">09/2009 – 07/2012 | Munich, Germany</div>
+                                <h4 class="node-title-company" contenteditable="false">Bachelor of Engineering: Industrial Engineering</h4>
+                                <div class="node-company" contenteditable="false">Technical University of Munich (TUM)</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Sidebar Column -->
+                <div class="col-side-eu">
+                    <!-- Social Links -->
+                    <section>
+                        <div class="eu-section-heading">
+                            <svg class="eu-heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                            <span contenteditable="false">SOCIAL LINKS</span>
+                            <div class="eu-heading-accent-bar"></div>
+                        </div>
+                        <div style="margin-top:6px;">
+                            <div style="font-weight:700; font-size:11.5px; color:var(--headings-color);" contenteditable="false">LinkedIn:</div>
+                            <div class="social-link" contenteditable="false">linkedin.com/in/daniel-gallego</div>
+                        </div>
+                    </section>
+
+                    <!-- Skills -->
+                    <section>
+                        <div class="eu-section-heading">
+                            <svg class="eu-heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-2.34"></path><path d="M14 14.66V17c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2.34"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path></svg>
+                            <span contenteditable="false">SKILLS</span>
+                            <div class="eu-heading-accent-bar"></div>
+                        </div>
+                        <div class="skills-pill-group">
+                            <div class="skill-pill" contenteditable="false">Project Planning & Budgeting</div>
+                            <div class="skill-pill" contenteditable="false">Agile & Scrum Methodologies</div>
+                            <div class="skill-pill" contenteditable="false">Supply Chain Optimization</div>
+                            <div class="skill-pill" contenteditable="false">Risk Management & Compliance</div>
+                            <div class="skill-pill" contenteditable="false">Cross-cultural Team Leadership</div>
+                        </div>
+                    </section>
+
+                    <!-- Languages -->
+                    <section>
+                        <div class="eu-section-heading">
+                            <svg class="eu-heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            <span contenteditable="false">LANGUAGES</span>
+                            <div class="eu-heading-accent-bar"></div>
+                        </div>
+                        <div class="language-block">
+                            <div style="font-size:11px;">
+                                <span style="color:var(--text-muted)">Mother language(s):</span>
+                                <span class="lang-name" contenteditable="false">GERMAN</span>
+                            </div>
+                            <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Other language(s):</div>
+                            <div class="lang-row">
+                                <span class="lang-name" contenteditable="false">ENGLISH</span>
+                                <span contenteditable="false">C2 (Proficient / Native)</span>
+                            </div>
+                            <div class="lang-row">
+                                <span class="lang-name" contenteditable="false">SPANISH</span>
+                                <span contenteditable="false">B2 (Upper Intermediate)</span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="cv_customizer.js"></script>
+</body>
+</html>

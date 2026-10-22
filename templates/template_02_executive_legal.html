@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template 2 - Executive Legal CV</title>
+    <link rel="stylesheet" href="cv_customizer.css">
+    <style>
+        :root {
+            --primary-accent: #1e293b;
+            --secondary-accent: #475569;
+            --sidebar-bg: #f8fafc;
+            --page-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --headings-color: #0f172a;
+            --font-body: 'Merriweather', Georgia, serif;
+            --font-heading: 'Merriweather', Georgia, serif;
+            --font-size-name: 26px;
+            --font-size-heading: 13.5px;
+            --font-size-base: 12px;
+            --line-height-base: 1.55;
+        }
+
+        .legal-page-inner {
+            padding: 42px 50px 35px 50px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            height: 100%;
+        }
+
+        /* Centered Header */
+        .legal-header {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .header-photo-container {
+            margin-bottom: 6px;
+        }
+
+        .applicant-name {
+            font-size: var(--font-size-name);
+            font-weight: 700;
+            color: var(--headings-color);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .applicant-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin: 2px 0 6px 0;
+        }
+
+        .contact-line {
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            margin: 2px 0;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 4px;
+        }
+
+        .divider-rule {
+            width: 100%;
+            height: 1.5px;
+            background-color: var(--headings-color);
+            margin: 8px 0 4px 0;
+        }
+
+        /* Shaded Title Banner */
+        .section-banner {
+            background-color: #f1f3f5;
+            padding: 5px 10px;
+            text-align: center;
+            border-radius: 2px;
+            margin: 6px 0 8px 0;
+        }
+
+        .section-banner h3 {
+            margin: 0;
+            font-size: var(--font-size-heading);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            color: var(--headings-color);
+        }
+
+        .summary-paragraph {
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            text-align: justify;
+            line-height: var(--line-height-base);
+            margin: 0;
+        }
+
+        /* Leader Dotted Items */
+        .entry-block {
+            margin-bottom: 12px;
+        }
+
+        .leader-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            font-size: 12.5px;
+            margin-bottom: 2px;
+        }
+
+        .leader-left {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            font-weight: 700;
+            color: var(--headings-color);
+            white-space: nowrap;
+        }
+
+        .entry-icon {
+            font-size: 11px;
+            color: var(--headings-color);
+        }
+
+        .leader-dots {
+            flex-grow: 1;
+            border-bottom: 1px dotted #94a3b8;
+            margin: 0 8px;
+            height: 1px;
+            position: relative;
+            top: -3px;
+        }
+
+        .leader-right {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-primary);
+            white-space: nowrap;
+            text-align: right;
+        }
+
+        .location-subtext {
+            text-align: right;
+            font-size: 11px;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-top: -2px;
+            margin-bottom: 4px;
+        }
+
+        .legal-bullets {
+            list-style: disc;
+            padding-left: 20px;
+            margin: 4px 0 0 0;
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        /* Skills 2-Column Grid */
+        .skills-grid-legal {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 30px;
+            row-gap: 8px;
+            margin-top: 4px;
+        }
+
+        .skill-item-leader {
+            display: flex;
+            align-items: baseline;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--headings-color);
+        }
+    </style>
+</head>
+<body data-template-id="template_02_executive_legal">
+
+<div class="cv-viewport">
+    <div class="cv-page">
+        <div class="legal-page-inner">
+            <!-- Header -->
+            <header class="legal-header">
+                <div class="header-photo-container photo-wrapper">
+                    <div class="photo-frame">
+                        <img id="cvProfileImg" src="dummy_profile.jpg" alt="Howard Jones">
+                    </div>
+                </div>
+
+                <h1 class="applicant-name" contenteditable="false">HOWARD JONES</h1>
+                <div class="applicant-title" contenteditable="false">Attorney at Law / Senior Legal Counsel</div>
+                <div class="contact-line" contenteditable="false">15 Yardley Road, San Francisco, United States, CA 94131</div>
+                <div class="contact-links">
+                    <span contenteditable="false">howard.jones@gmail.com</span>
+                    <span contenteditable="false">(415) 555-2671</span>
+                </div>
+            </header>
+
+            <div class="divider-rule"></div>
+
+            <!-- Summary -->
+            <section>
+                <div class="section-banner">
+                    <h3 contenteditable="false">SUMMARY</h3>
+                </div>
+                <p class="summary-paragraph" contenteditable="false">
+                    Experienced and innovative Lawyer with a passion and dedication to justice. Highly organized and skilled in public speaking. Bringing forth a proven track record of achieving favorable outcomes for clients. Adept in preparing for trials, reviewing documents, and effectively presenting cases in court. A strong leader who works well under pressure and understands the complexities of the legal system.
+                </p>
+            </section>
+
+            <!-- Experience -->
+            <section>
+                <div class="section-banner">
+                    <h3 contenteditable="false">EXPERIENCE</h3>
+                </div>
+
+                <div class="entry-block item-wrapper">
+                    <div class="leader-row">
+                        <div class="leader-left">
+                            <span class="entry-icon">❖</span>
+                            <span contenteditable="false">Lawyer, Madison and Fletcher Attorneys at Law</span>
+                        </div>
+                        <div class="leader-dots"></div>
+                        <div class="leader-right" contenteditable="false">Nov 2010 — Jul 2018</div>
+                    </div>
+                    <div class="location-subtext" contenteditable="false">San Francisco, CA</div>
+                    <ul class="legal-bullets">
+                        <li contenteditable="false">Performed adequate legal research to ensure a deep understanding of complex corporate and civil cases.</li>
+                        <li contenteditable="false">Prepared comprehensive legal briefs and pleadings without error and in a timely manner.</li>
+                        <li contenteditable="false">Filed briefings, collected and preserved evidence, and presented oral arguments to judges and jurors.</li>
+                        <li contenteditable="false">Worked proactively to build and foster lasting, trusting relationships with individual and commercial clients.</li>
+                    </ul>
+                </div>
+
+                <div class="entry-block item-wrapper">
+                    <div class="leader-row">
+                        <div class="leader-left">
+                            <span class="entry-icon">❖</span>
+                            <span contenteditable="false">Associate Lawyer, Johnson & Levine, LLC</span>
+                        </div>
+                        <div class="leader-dots"></div>
+                        <div class="leader-right" contenteditable="false">Aug 2010 — Sep 2014</div>
+                    </div>
+                    <div class="location-subtext" contenteditable="false">Los Angeles, CA</div>
+                    <ul class="legal-bullets">
+                        <li contenteditable="false">Worked with clients to understand their circumstances, rights, and distinct litigation needs.</li>
+                        <li contenteditable="false">Mediated disputes and sought to enforce regulatory statutory compliance across corporate contracts.</li>
+                        <li contenteditable="false">Maintained strict integrity, privileged work product, and attorney-client confidentiality at all times.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section>
+                <div class="section-banner">
+                    <h3 contenteditable="false">EDUCATION</h3>
+                </div>
+
+                <div class="entry-block item-wrapper">
+                    <div class="leader-row">
+                        <div class="leader-left">
+                            <span class="entry-icon">❖</span>
+                            <span contenteditable="false">New York Law School — Juris Doctor (J.D.)</span>
+                        </div>
+                        <div class="leader-dots"></div>
+                        <div class="leader-right" contenteditable="false">Jul 2003 — Apr 2006</div>
+                    </div>
+                    <div class="location-subtext" contenteditable="false">New York, NY</div>
+                </div>
+
+                <div class="entry-block item-wrapper">
+                    <div class="leader-row">
+                        <div class="leader-left">
+                            <span class="entry-icon">❖</span>
+                            <span contenteditable="false">New York University — Bachelor of Science in Economics</span>
+                        </div>
+                        <div class="leader-dots"></div>
+                        <div class="leader-right" contenteditable="false">Jul 1999 — Apr 2003</div>
+                    </div>
+                    <div class="location-subtext" contenteditable="false">New York, NY</div>
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section>
+                <div class="section-banner">
+                    <h3 contenteditable="false">SKILLS & SPECIALIZATIONS</h3>
+                </div>
+                <div class="skills-grid-legal">
+                    <div class="skill-item-leader">
+                        <span contenteditable="false">Regulatory Compliance</span>
+                        <div class="leader-dots"></div>
+                    </div>
+                    <div class="skill-item-leader">
+                        <span contenteditable="false">Corporate Governance</span>
+                        <div class="leader-dots"></div>
+                    </div>
+                    <div class="skill-item-leader">
+                        <span contenteditable="false">Contract Negotiation</span>
+                        <div class="leader-dots"></div>
+                    </div>
+                    <div class="skill-item-leader">
+                        <span contenteditable="false">Mediation & Arbitration</span>
+                        <div class="leader-dots"></div>
+                    </div>
+                    <div class="skill-item-leader">
+                        <span contenteditable="false">Civil & Appellate Litigation</span>
+                        <div class="leader-dots"></div>
+                    </div>
+                    <div class="skill-item-leader">
+                        <span contenteditable="false">Legal Research & Briefing</span>
+                        <div class="leader-dots"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<script src="cv_customizer.js"></script>
+</body>
+</html>

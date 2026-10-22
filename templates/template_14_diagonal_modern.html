@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template 14 - Diagonal Modern Header CV</title>
+    <link rel="stylesheet" href="cv_customizer.css">
+    <style>
+        :root {
+            --primary-accent: #1b365d;
+            --secondary-accent: #3b82f6;
+            --sidebar-bg: #ebf3fa;
+            --page-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --headings-color: #1b365d;
+            --font-size-name: 30px;
+            --font-size-heading: 14px;
+            --font-size-base: 12px;
+        }
+
+        .cv-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            background-color: var(--page-bg);
+        }
+
+        /* Diagonal Shaped Header */
+        .header-diagonal {
+            position: relative;
+            padding: 30px 40px 18px 40px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        .header-diagonal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 55%;
+            height: 100%;
+            background-color: var(--sidebar-bg);
+            z-index: 0;
+            clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            z-index: 1;
+        }
+
+        .header-title-block {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .applicant-name {
+            font-size: var(--font-size-name);
+            font-weight: 800;
+            color: var(--primary-accent);
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .applicant-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--secondary-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        /* Dark Contact Bar */
+        .contact-bar {
+            background-color: #2b3b4f;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 40px;
+            font-size: 11.5px;
+            z-index: 1;
+            box-sizing: border-box;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .contact-icon {
+            width: 13px;
+            height: 13px;
+            color: #38bdf8;
+            flex-shrink: 0;
+        }
+
+        /* 2-Column Main Content */
+        .main-content-grid {
+            display: flex;
+            padding: 24px 40px 20px 40px;
+            gap: 32px;
+            flex: 1;
+            box-sizing: border-box;
+        }
+
+        .col-experience {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .col-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .section-title {
+            font-size: var(--font-size-heading);
+            font-weight: 700;
+            color: var(--primary-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 4px;
+            margin: 0 0 6px 0;
+        }
+
+        .summary-text {
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .timeline-entry {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-bottom: 12px;
+        }
+
+        .entry-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .entry-role {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--headings-color);
+            margin: 0;
+        }
+
+        .entry-date {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--secondary-accent);
+        }
+
+        .entry-company {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 3px;
+        }
+
+        .entry-bullets {
+            list-style: disc;
+            padding-left: 16px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        /* Sidebar entries */
+        .edu-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-bottom: 8px;
+        }
+
+        .edu-degree {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .edu-school {
+            font-size: 11.5px;
+            color: var(--text-secondary);
+        }
+
+        .edu-year {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 11.5px;
+            color: var(--text-secondary);
+        }
+
+        .skills-list li {
+            position: relative;
+            padding-left: 12px;
+            line-height: 1.35;
+        }
+
+        .skills-list li::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-accent);
+        }
+    </style>
+</head>
+<body data-template-id="template_14_diagonal_modern">
+
+<div class="page-container">
+    <div class="cv-page cv-paper-bg" id="cvPage">
+        <div class="cv-wrapper">
+            <!-- Diagonal Header -->
+            <header class="header-diagonal">
+                <div class="header-content">
+                    <div class="photo-wrapper">
+                        <div class="photo-frame">
+                            <img id="cvProfileImg" src="dummy_profile.jpg" alt="Profile Picture">
+                        </div>
+                    </div>
+                    <div class="header-title-block">
+                        <h1 class="applicant-name" contenteditable="false">JORDAN REED</h1>
+                        <p class="applicant-title" contenteditable="false">Senior Cloud Systems Architect</p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dark Navy Contact Bar -->
+            <div class="contact-bar">
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <span contenteditable="false">jordan.reed@example.com</span>
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <span contenteditable="false">+1 (555) 345-6789</span>
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <span contenteditable="false">San Francisco, CA</span>
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    <span contenteditable="false">linkedin.com/in/jordan-reed</span>
+                </div>
+            </div>
+
+            <!-- Main Content 2-Column Grid -->
+            <div class="main-content-grid">
+                <!-- Left Main (Experience & Summary) -->
+                <main class="col-experience">
+                    <section>
+                        <h2 class="section-title" contenteditable="false">PROFESSIONAL PROFILE</h2>
+                        <p class="summary-text" contenteditable="false">
+                            High-performing Cloud Systems Architect with 8+ years designing scalable, fault-tolerant cloud platforms and infrastructure automation. Adept at driving multi-cloud adoption, containerization, and modern DevSecOps practices across distributed global engineering teams.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 class="section-title" contenteditable="false">WORK EXPERIENCE</h2>
+
+                        <div class="timeline-entry item-wrapper">
+                            <div class="entry-top">
+                                <h4 class="entry-role" contenteditable="false">Principal Cloud Architect</h4>
+                                <span class="entry-date" contenteditable="false">2021 — PRESENT</span>
+                            </div>
+                            <div class="entry-company" contenteditable="false">Stratosphere Enterprise Cloud • San Francisco, CA</div>
+                            <ul class="entry-bullets">
+                                <li contenteditable="false">Architected zero-trust multi-region Kubernetes platform across AWS and GCP supporting 10M+ daily transactions.</li>
+                                <li contenteditable="false">Led 14 senior engineers in designing GitOps deployment workflows, reducing production incident recovery time (MTTR) by 65%.</li>
+                                <li contenteditable="false">Engineered automated Terraform infrastructure modules adopted across 32 engineering squads.</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-entry item-wrapper">
+                            <div class="entry-top">
+                                <h4 class="entry-role" contenteditable="false">Senior Infrastructure Engineer</h4>
+                                <span class="entry-date" contenteditable="false">2018 — 2021</span>
+                            </div>
+                            <div class="entry-company" contenteditable="false">Vortex Software Systems • San Jose, CA</div>
+                            <ul class="entry-bullets">
+                                <li contenteditable="false">Migrated legacy bare-metal infrastructure to containerized AWS microservices, lowering operational overhead by $340k annually.</li>
+                                <li contenteditable="false">Implemented automated canary deployments and Prometheus/Grafana real-time observability dashboards.</li>
+                                <li contenteditable="false">Authored security compliance documentation ensuring SOC2 Type II accreditation.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 class="section-title" contenteditable="false">CERTIFICATIONS</h2>
+                        <div class="timeline-entry item-wrapper">
+                            <ul class="entry-bullets">
+                                <li contenteditable="false"><strong>AWS Certified Solutions Architect — Professional</strong> (2022)</li>
+                                <li contenteditable="false"><strong>Certified Kubernetes Administrator (CKA)</strong> (2021)</li>
+                            </ul>
+                        </div>
+                    </section>
+                </main>
+
+                <!-- Right Sidebar (Education & Skills) -->
+                <aside class="col-details">
+                    <section>
+                        <h3 class="section-title" contenteditable="false">EDUCATION</h3>
+                        <div class="edu-item">
+                            <div class="edu-degree" contenteditable="false">B.S. Computer Engineering</div>
+                            <div class="edu-school" contenteditable="false">Stanford University</div>
+                            <div class="edu-year" contenteditable="false">2014 — 2018</div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="section-title" contenteditable="false">TECHNICAL SKILLS</h3>
+                        <ul class="skills-list">
+                            <li contenteditable="false">AWS & Google Cloud Platform</li>
+                            <li contenteditable="false">Kubernetes & Docker</li>
+                            <li contenteditable="false">Terraform & Pulumi (IaC)</li>
+                            <li contenteditable="false">CI/CD (GitHub Actions, ArgoCD)</li>
+                            <li contenteditable="false">Go & Python Automation</li>
+                            <li contenteditable="false">Prometheus, Grafana & Datadog</li>
+                            <li contenteditable="false">Linux System Internals</li>
+                            <li contenteditable="false">Network Security & VPNs</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3 class="section-title" contenteditable="false">LANGUAGES</h3>
+                        <div class="skills-list">
+                            <li contenteditable="false"><strong>English:</strong> Native</li>
+                            <li contenteditable="false"><strong>German:</strong> Intermediate</li>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="cv_customizer.js"></script>
+</body>
+</html>

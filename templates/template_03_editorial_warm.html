@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template 3 - Warm Editorial CV</title>
+    <link rel="stylesheet" href="cv_customizer.css">
+    <style>
+        :root {
+            --primary-accent: #78350f;
+            --secondary-accent: #92400e;
+            --sidebar-bg: #ece5dd;
+            --page-bg: #ffffff;
+            --text-primary: #1f2937;
+            --text-secondary: #374151;
+            --text-muted: #6b7280;
+            --headings-color: #111827;
+            --font-body: 'Merriweather', Georgia, serif;
+            --font-heading: 'Merriweather', Georgia, serif;
+            --font-size-name: 29px;
+            --font-size-heading: 13.5px;
+            --font-size-base: 12px;
+            --line-height-base: 1.5;
+        }
+
+        .editorial-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background-color: var(--page-bg);
+        }
+
+        /* Top Header Banner */
+        .warm-header-banner {
+            background-color: var(--sidebar-bg);
+            padding: 30px 40px;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .header-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .applicant-name {
+            font-size: var(--font-size-name);
+            font-weight: 700;
+            color: var(--headings-color);
+            margin: 0;
+            line-height: 1.15;
+            font-family: var(--font-heading);
+        }
+
+        .applicant-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--primary-accent);
+            text-transform: capitalize;
+            margin: 2px 0 6px 0;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.3px;
+        }
+
+        .header-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Two Column Body with Vertical Divider */
+        .editorial-body {
+            display: flex;
+            flex-grow: 1;
+            padding: 28px 40px 30px 40px;
+            gap: 32px;
+            box-sizing: border-box;
+        }
+
+        .editorial-col-left {
+            width: 32%;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            border-right: 1px solid #e5e7eb;
+            padding-right: 28px;
+            box-sizing: border-box;
+        }
+
+        .editorial-col-right {
+            width: 68%;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            box-sizing: border-box;
+        }
+
+        .editorial-section-title {
+            font-size: var(--font-size-heading);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            color: var(--headings-color);
+            margin: 0 0 10px 0;
+        }
+
+        .summary-copy {
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .editorial-skills {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .editorial-skills li {
+            position: relative;
+            padding-left: 12px;
+            line-height: 1.4;
+        }
+
+        .editorial-skills li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-accent);
+        }
+
+        /* Experience Block */
+        .exp-item {
+            margin-bottom: 16px;
+        }
+
+        .exp-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .exp-role-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            font-style: italic;
+            color: var(--headings-color);
+            margin: 0;
+        }
+
+        .exp-date-range {
+            font-size: 12px;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .exp-company-sub {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+            margin: 0 0 6px 0;
+        }
+
+        .exp-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        .exp-bullets li {
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .exp-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-accent);
+        }
+    </style>
+</head>
+<body data-template-id="template_03_editorial_warm">
+
+<div class="cv-viewport">
+    <div class="cv-page">
+        <div class="editorial-wrapper">
+            <!-- Warm Header -->
+            <header class="warm-header-banner">
+                <div class="photo-wrapper">
+                    <div class="photo-frame">
+                        <img id="cvProfileImg" src="dummy_profile.jpg" alt="Samantha Williams">
+                    </div>
+                </div>
+
+                <div class="header-meta">
+                    <h1 class="applicant-name" contenteditable="false">Samantha Williams</h1>
+                    <div class="applicant-title" contenteditable="false">Senior Analyst</div>
+                    <div class="header-contacts">
+                        <span contenteditable="false">New York, NY, 10001</span>
+                        <span contenteditable="false">samantha.williams@example.com</span>
+                        <span contenteditable="false">(555) 789-1234</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Body Split -->
+            <div class="editorial-body">
+                <!-- Left Column -->
+                <div class="editorial-col-left">
+                    <section>
+                        <h3 class="editorial-section-title" contenteditable="false">SUMMARY</h3>
+                        <p class="summary-copy" contenteditable="false">
+                            Senior Analyst with 5+ years of experience in data analysis, business intelligence, and process optimization. Skilled in driving operational efficiency, forecasting, and leading data-driven strategies to support business decisions and improvements. Strong communicator focused on results.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3 class="editorial-section-title" contenteditable="false">SKILLS</h3>
+                        <ul class="editorial-skills">
+                            <li contenteditable="false">Project Management</li>
+                            <li contenteditable="false">Data-driven Decision Making</li>
+                            <li contenteditable="false">SQL & Excel Advanced</li>
+                            <li contenteditable="false">Financial Modeling</li>
+                            <li contenteditable="false">Business Intelligence Tools</li>
+                            <li contenteditable="false">Statistical Forecasting</li>
+                            <li contenteditable="false">Stakeholder Presentations</li>
+                            <li contenteditable="false">Cross-functional Leadership</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <!-- Right Column -->
+                <div class="editorial-col-right">
+                    <section>
+                        <h3 class="editorial-section-title" contenteditable="false">EXPERIENCE</h3>
+
+                        <div class="exp-item item-wrapper">
+                            <div class="exp-header-row">
+                                <h4 class="exp-role-title" contenteditable="false">Senior Analyst</h4>
+                                <span class="exp-date-range" contenteditable="false">Jun 2021 — Current</span>
+                            </div>
+                            <div class="exp-company-sub" contenteditable="false">Loom & Lantern Co. - New York, NY</div>
+                            <ul class="exp-bullets">
+                                <li contenteditable="false">Spearhead data analysis and reporting for key business functions, identifying trends and providing insights to improve profitability.</li>
+                                <li contenteditable="false">Conduct in-depth market analysis and competitive benchmarking to inform strategic decisions, resulting in a 15% increase in market share.</li>
+                                <li contenteditable="false">Develop predictive models to forecast sales performance and customer behavior, contributing to accurate budgeting and resource allocation.</li>
+                            </ul>
+                        </div>
+
+                        <div class="exp-item item-wrapper">
+                            <div class="exp-header-row">
+                                <h4 class="exp-role-title" contenteditable="false">Business Analyst</h4>
+                                <span class="exp-date-range" contenteditable="false">Jul 2017 — Apr 2021</span>
+                            </div>
+                            <div class="exp-company-sub" contenteditable="false">Willow & Wren Ltd. - New York, NY</div>
+                            <ul class="exp-bullets">
+                                <li contenteditable="false">Analyzed and interpreted large datasets to identify business opportunities and recommend process improvements, leading to a 20% reduction in operational costs.</li>
+                                <li contenteditable="false">Created detailed financial models and dashboards to track key performance indicators (KPIs), enabling data-driven decision-making.</li>
+                                <li contenteditable="false">Worked closely with project managers to monitor progress on major initiatives, ensuring projects were delivered on time and within budget.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="editorial-section-title" contenteditable="false">EDUCATION</h3>
+
+                        <div class="exp-item item-wrapper">
+                            <div class="exp-header-row">
+                                <h4 class="exp-role-title" contenteditable="false">New York University</h4>
+                                <span class="exp-date-range" contenteditable="false">Aug 2013 — Apr 2017</span>
+                            </div>
+                            <div class="exp-company-sub" contenteditable="false">New York, NY | Bachelor of Science, Economics & Statistics</div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="cv_customizer.js"></script>
+</body>
+</html>

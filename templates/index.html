@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional CV Template Catalog & Design Selector</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #0b0f19;
+            --bg-card: #151d2e;
+            --bg-card-hover: #1e293b;
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-card-hover: rgba(59, 130, 246, 0.4);
+            --accent-primary: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-emerald: #10b981;
+            --text-heading: #ffffff;
+            --text-body: #94a3b8;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-page);
+            color: #f1f5f9;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Navigation Bar */
+        .catalog-nav {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-card);
+            padding: 14px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .nav-logo-badge {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35);
+        }
+
+        .nav-title {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-subtitle {
+            font-size: 11px;
+            color: var(--text-body);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            background: #1e293b;
+            color: #f8fafc;
+            border: 1px solid var(--border-card);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-btn:hover {
+            background: #334155;
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .nav-btn.primary {
+            background: linear-gradient(135deg, #2563eb, #0284c7);
+            border-color: #38bdf8;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .nav-btn.primary:hover {
+            background: linear-gradient(135deg, #1d4ed8, #0369a1);
+        }
+
+        /* Hero Header Section */
+        .catalog-hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 44px 24px 24px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #38bdf8;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .hero-title {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .hero-gradient-text {
+            background: linear-gradient(135deg, #60a5fa, #38bdf8, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            font-size: 14px;
+            color: var(--text-body);
+            max-width: 820px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+
+        /* Feature Pills */
+        .feature-pills-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .feature-pill {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid var(--border-card);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11.5px;
+            color: #e2e8f0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pill-icon {
+            font-size: 13px;
+        }
+
+        /* Filter & Search Bar */
+        .filter-search-container {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .search-input-box {
+            width: 100%;
+            max-width: 480px;
+            position: relative;
+        }
+
+        .search-input-box input {
+            width: 100%;
+            background: #1e293b;
+            border: 1px solid var(--border-card);
+            border-radius: 24px;
+            padding: 10px 18px 10px 42px;
+            font-size: 13px;
+            color: #ffffff;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-input-box input:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            color: var(--text-muted);
+        }
+
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .filter-tab {
+            background: transparent;
+            color: var(--text-body);
+            border: 1px solid var(--border-card);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-tab:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .filter-tab.active {
+            background: var(--accent-primary);
+            color: #ffffff;
+            border-color: var(--accent-primary);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+        }
+
+        /* Gallery Container */
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 24px;
+        }
+
+        /* Design Card */
+        .design-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .design-card:hover {
+            transform: translateY(-4px);
+            background: var(--bg-card-hover);
+            border-color: var(--border-card-hover);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+        }
+
+        /* Thumbnail Image & Overlay */
+        .card-thumb-wrapper {
+            position: relative;
+            width: 100%;
+            height: 410px;
+            background: #1e293b;
+            overflow: hidden;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-card);
+        }
+
+        .card-thumb-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.4s ease;
+        }
+
+        .design-card:hover .card-thumb-img {
+            transform: scale(1.03);
+        }
+
+        .thumb-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(11, 15, 25, 0.65);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.25s ease;
+        }
+
+        .card-thumb-wrapper:hover .thumb-overlay {
+            opacity: 1;
+        }
+
+        .quick-preview-btn {
+            background: #ffffff;
+            color: #0f172a;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            transform: translateY(6px);
+            transition: all 0.2s;
+        }
+
+        .card-thumb-wrapper:hover .quick-preview-btn {
+            transform: translateY(0);
+        }
+
+        .quick-preview-btn:hover {
+            background: #38bdf8;
+            color: #ffffff;
+        }
+
+        .card-floating-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 3px 9px;
+            border-radius: 6px;
+            font-size: 10.5px;
+            font-weight: 700;
+            color: #38bdf8;
+            letter-spacing: 0.5px;
+        }
+
+        .card-pdf-size {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(16, 185, 129, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* Card Content Details */
+        .card-details {
+            padding: 16px 20px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-grow: 1;
+        }
+
+        .card-header-block {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .card-subtitle {
+            font-size: 11px;
+            font-weight: 700;
+            color: #38bdf8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .card-description {
+            font-size: 12px;
+            color: var(--text-body);
+            line-height: 1.45;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: auto;
+            padding-top: 6px;
+        }
+
+        .card-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 10.5px;
+            color: var(--text-muted);
+        }
+
+        .card-footer-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .btn-open-template {
+            flex-grow: 1;
+            background: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-open-template:hover {
+            background: #1d4ed8;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-view-pdf {
+            background: #1e293b;
+            color: #f1f5f9;
+            border: 1px solid var(--border-card);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-view-pdf:hover {
+            background: #334155;
+            color: #ffffff;
+        }
+
+        /* Modal Preview Viewer */
+        .preview-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(3, 7, 18, 0.88);
+            backdrop-filter: blur(14px);
+            display: none;
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .preview-modal-window {
+            background: #0f172a;
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 980px;
+            height: 92vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-header {
+            background: #1e293b;
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border-card);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-template-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .modal-badge {
+            font-size: 11px;
+            font-weight: 700;
+            background: #2563eb;
+            color: #ffffff;
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        .modal-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0 4px;
+            line-height: 1;
+            margin-left: 10px;
+        }
+
+        .modal-close-btn:hover {
+            color: #ffffff;
+        }
+
+        .modal-stage {
+            flex-grow: 1;
+            background: #334155;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            overflow: auto;
+            padding: 24px 20px;
+        }
+
+        .modal-frame-holder {
+            width: 210mm;
+            height: 297mm;
+            min-height: 297mm;
+            background: #ffffff;
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6);
+            transform-origin: top center;
+            transition: transform 0.2s ease;
+        }
+
+        .modal-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* Footer */
+        .catalog-footer {
+            background: #0f172a;
+            border-top: 1px solid var(--border-card);
+            padding: 20px 32px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: auto;
+        }
+
+        .catalog-footer a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="catalog-nav">
+        <a href="index.html" class="nav-brand">
+            <div class="nav-logo-badge">📑</div>
+            <div>
+                <div class="nav-title">CV Design & Template Suite</div>
+                <div class="nav-subtitle">14 Handcrafted Archetypes • 1 MB – 3 MB Vector PDF Standard</div>
+            </div>
+        </a>
+
+        <div class="nav-actions">
+            <a href="cv_suite_pro.html" class="nav-btn primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                <span>Launch Master Studio</span>
+            </a>
+            <button class="nav-btn" onclick="triggerExportNotice()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                <span>Batch PDF Export</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="catalog-hero">
+        <div class="hero-badge">All 14 Professional CV Templates Complete</div>
+        <h1 class="hero-title">
+            Choose Your Preferred <span class="hero-gradient-text">CV Template Design</span>
+        </h1>
+        <p class="hero-description">
+            Explore all 14 distinct professional CV archetypes crafted with universal dummy datasets, clean avatar silhouettes, full image manipulation (size, shape, crop, and dedicated photo visibility box), color theme customization, live in-place HTML editing, isolated saving to <code>saved_cvs/</code>, and high-quality 1 MB – 3 MB A4 vector PDF export.
+        </p>
+
+        <!-- Feature Pills -->
+        <div class="feature-pills-row">
+            <div class="feature-pill">
+                <span class="pill-icon">📷</span>
+                <span>Photo Box: Show / Hide Toggle, Size, Shape, Zoom</span>
+            </div>
+            <div class="feature-pill">
+                <span class="pill-icon">✏️</span>
+                <span>In-Place Live HTML Editing</span>
+            </div>
+            <div class="feature-pill">
+                <span class="pill-icon">🎨</span>
+                <span>Themes & Accent Colors</span>
+            </div>
+            <div class="feature-pill">
+                <span class="pill-icon">💾</span>
+                <span>Save to <code>saved_cvs/</code> (Template Untouched)</span>
+            </div>
+            <div class="feature-pill">
+                <span class="pill-icon">📄</span>
+                <span>1 MB – 3 MB High-Definition Vector PDFs</span>
+            </div>
+        </div>
+
+        <!-- Filter & Search -->
+        <div class="filter-search-container">
+            <div class="search-input-box">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="templateSearch" placeholder="Search templates by role, style, layout..." oninput="handleSearch(this.value)">
+            </div>
+
+            <div class="filter-bar">
+                <button class="filter-tab active" onclick="filterGallery('all', this)">All Templates (14)</button>
+                <button class="filter-tab" onclick="filterGallery('executive', this)">Executive & Legal</button>
+                <button class="filter-tab" onclick="filterGallery('minimalist', this)">Minimalist & Clean</button>
+                <button class="filter-tab" onclick="filterGallery('tech', this)">Tech & Cloud</button>
+                <button class="filter-tab" onclick="filterGallery('creative', this)">Creative & Editorial</button>
+                <button class="filter-tab" onclick="filterGallery('europass', this)">Europass Standard</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Gallery Grid -->
+    <main class="gallery-container">
+        <div class="template-grid" id="templateGrid">
+            
+            <!-- Template 01: Minimalist Studio -->
+            <div class="design-card" data-category="minimalist" data-title="Minimalist Studio CV">
+                <div class="card-thumb-wrapper" onclick="openPreviewModal('template_01_minimalist.html', 'Template 01 - Minimalist Studio', 'template_01_minimalist.pdf')">
+                    <img class="card-thumb-img" src="thumb_template_01_minimalist.png" alt="Template 01 Minimalist">
+                    <div class="thumb-overlay">
+                        <button class="quick-preview-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick Preview</span>
+                        </button>
+                    </div>
+                    <span class="card-floating-badge">TEMPLATE 01</span>
+                    <span class="card-pdf-size">1.49 MB PDF</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-header-block">
+                        <div class="card-subtitle">Minimalist 2-Column</div>
+                        <h3 class="card-title">Minimalist Studio</h3>
+                    </div>
+                    <p class="card-description">
+                        Soft neutral gray sidebar, clean uppercase divider lines, structured summary, experience timeline, and bulleted skill set.
+                    </p>
+                    <div class="card-tag-row">
+                        <span class="card-tag">Two-Column</span>
+                        <span class="card-tag">Clean Dividers</span>
+                        <span class="card-tag">Minimalist</span>
+                    </div>
+                    <div class="card-footer-buttons">
+                        <a href="template_01_minimalist.html" class="btn-open-template" target="_blank">
+                            <span>Customize & Edit</span>
+                        </a>
+                        <a href="template_01_minimalist.pdf" class="btn-view-pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 02: Executive Legal -->
+            <div class="design-card" data-category="executive" data-title="Executive Legal CV">
+                <div class="card-thumb-wrapper" onclick="openPreviewModal('template_02_executive_legal.html', 'Template 02 - Executive Legal', 'template_02_executive_legal.pdf')">
+                    <img class="card-thumb-img" src="thumb_template_02_executive_legal.png" alt="Template 02 Executive Legal">
+                    <div class="thumb-overlay">
+                        <button class="quick-preview-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick Preview</span>
+                        </button>
+                    </div>
+                    <span class="card-floating-badge">TEMPLATE 02</span>
+                    <span class="card-pdf-size">1.51 MB PDF</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-header-block">
+                        <div class="card-subtitle">Centered Serif Classic</div>
+                        <h3 class="card-title">Executive Legal</h3>
+                    </div>
+                    <p class="card-description">
+                        Prestigious single-column layout with shaded title banners, elegant serif typography, dotted leader lines, and legal grid.
+                    </p>
+                    <div class="card-tag-row">
+                        <span class="card-tag">Single Column</span>
+                        <span class="card-tag">Classic Serif</span>
+                        <span class="card-tag">Dotted Leaders</span>
+                    </div>
+                    <div class="card-footer-buttons">
+                        <a href="template_02_executive_legal.html" class="btn-open-template" target="_blank">
+                            <span>Customize & Edit</span>
+                        </a>
+                        <a href="template_02_executive_legal.pdf" class="btn-view-pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 03: Warm Editorial -->
+            <div class="design-card" data-category="creative" data-title="Warm Editorial CV">
+                <div class="card-thumb-wrapper" onclick="openPreviewModal('template_03_editorial_warm.html', 'Template 03 - Warm Editorial', 'template_03_editorial_warm.pdf')">
+                    <img class="card-thumb-img" src="thumb_template_03_editorial_warm.png" alt="Template 03 Warm Editorial">
+                    <div class="thumb-overlay">
+                        <button class="quick-preview-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick Preview</span>
+                        </button>
+                    </div>
+                    <span class="card-floating-badge">TEMPLATE 03</span>
+                    <span class="card-pdf-size">1.46 MB PDF</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-header-block">
+                        <div class="card-subtitle">Consulting & Editorial</div>
+                        <h3 class="card-title">Warm Editorial</h3>
+                    </div>
+                    <p class="card-description">
+                        Distinctive warm stone/beige header block, vertical hairline column separator, right-aligned italic dates, and serif titles.
+                    </p>
+                    <div class="card-tag-row">
+                        <span class="card-tag">Warm Tone</span>
+                        <span class="card-tag">Hairline Split</span>
+                        <span class="card-tag">Editorial Serif</span>
+                    </div>
+                    <div class="card-footer-buttons">
+                        <a href="template_03_editorial_warm.html" class="btn-open-template" target="_blank">
+                            <span>Customize & Edit</span>
+                        </a>
+                        <a href="template_03_editorial_warm.pdf" class="btn-view-pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 04: Blue Sidebar Modern -->
+            <div class="design-card" data-category="executive" data-title="Blue Sidebar Modern CV">
+                <div class="card-thumb-wrapper" onclick="openPreviewModal('template_04_blue_sidebar.html', 'Template 04 - Blue Sidebar Modern', 'template_04_blue_sidebar.pdf')">
+                    <img class="card-thumb-img" src="thumb_template_04_blue_sidebar.png" alt="Template 04 Blue Sidebar">
+                    <div class="thumb-overlay">
+                        <button class="quick-preview-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick Preview</span>
+                        </button>
+                    </div>
+                    <span class="card-floating-badge">TEMPLATE 04</span>
+                    <span class="card-pdf-size">1.56 MB PDF</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-header-block">
+                        <div class="card-subtitle">Hero Blue Sidebar</div>
+                        <h3 class="card-title">Blue Sidebar Modern</h3>
+                    </div>
+                    <p class="card-description">
+                        James Miller A style ice blue hero sidebar, circular avatar, skill progress percentage bars, education details, and clean experience timeline.
+                    </p>
+                    <div class="card-tag-row">
+                        <span class="card-tag">Blue Sidebar</span>
+                        <span class="card-tag">Progress Bars</span>
+                        <span class="card-tag">Project Lead</span>
+                    </div>
+                    <div class="card-footer-buttons">
+                        <a href="template_04_blue_sidebar.html" class="btn-open-template" target="_blank">
+                            <span>Customize & Edit</span>
+                        </a>
+                        <a href="template_04_blue_sidebar.pdf" class="btn-view-pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 05: Navy Banner Header -->
+            <div class="design-card" data-category="tech" data-title="Navy Banner Header CV">
+                <div class="card-thumb-wrapper" onclick="openPreviewModal('template_05_navy_banner.html', 'Template 05 - Navy Banner Header', 'template_05_navy_banner.pdf')">
+                    <img class="card-thumb-img" src="thumb_template_05_navy_banner.png" alt="Template 05 Navy Banner">
+                    <div class="thumb-overlay">
+                        <button class="quick-preview-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick Preview</span>
+                        </button>
+                    </div>
+                    <span class="card-floating-badge">TEMPLATE 05</span>
+                    <span class="card-pdf-size">1.55 MB PDF</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-header-block">
+                        <div class="card-subtitle">Midnight Navy Banner</div>
+                        <h3 class="card-title">Navy Banner Header</h3>
+                    </div>
+                    <p class="card-description">
+                        James Miller B style deep navy top banner band with circular photo, tech skill badges, structured experience blocks, and key projects.
+                    </p>
+                    <div class="card-tag-row">
+                        <span class="card-tag">Navy Banner</span>
+                        <span class="card-tag">Full-Stack</span>
+                        <span class="card-tag">Skill Badges</span>
+                    </div>
+                    <div class="card-footer-buttons">
+                        <a href="template_05_navy_banner.html" class="btn-open-template" target="_blank">
+                            <span>Customize & Edit</span>
+                        </a>
+                        <a href="template_05_navy_banner.pdf" class="btn-view-pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 06: Split Shaded Accent -->
+            <div class="design-card" data-category="creative" data-title="Split Shaded Accent CV">
+                <div class="card-thumb-wrapper" onclick="openPreviewModal('template_06_split_shaded.html', 'Template 06 - Split Shaded Accent', 'template_06_split_shaded.pdf')">
+                    <img class="card-thumb-img" src="thumb_template_06_split_shaded.png" alt="Template 06 Split Shaded">
+                    <div class="thumb-overlay">
+                        <button class="quick-preview-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick Preview</span>
+                        </button>
+                    </div>
+                    <span class="card-floating-badge">TEMPLATE 06</span>
+                    <span class="card-pdf-size">1.53 MB PDF</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-header-block">
+                        <div class="card-subtitle">Horizontal Shaded Bars</div>
+                        <h3 class="card-title">Split Shaded Accent</h3>
+                    </div>
+                    <p class="card-description">
+                        James Miller C style shaded horizontal title bars, top header with right-aligned avatar, creative agency campaigns, and awards.
+                    </p>
+                    <div class="card-tag-row">
+                        <span class="card-tag">Shaded Bars</span>
+                        <span class="card-tag">Art Director</span>
+                        <span class="card-tag">Right Photo</span>
+                    </div>
+                    <div class="card-footer-buttons">
+                        <a href="template_06_split_shaded.html" class="btn-open-template" target="_blank">
+                            <span>Customize & Edit</span>
+                        </a>
+                        <a href="template_06_split_shaded.pdf" class="btn-view-pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 07: Europass Official -->
+            <div class="design-card" data-category="europass" data-title="Europass Official CV">
+                <div class="card-thumb-wrapper" onclick="openPreviewModal('template_07_europass.html', 'Template 07 - Europass Official', 'template_07_europass.pdf')">
+                    <img class="card-thumb-img" src="thumb_template_07_europass.png" alt="Template 07 Europass">
+                    <div class="thumb-overlay">
+                        <button class="quick-preview-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick Preview</span>
+                        </button>
+                    </div>
+                    <span class="card-floating-badge">TEMPLATE 07</span>
+                    <span class="card-pdf-size">1.56 MB PDF</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-header-block">
+                        <div class="card-subtitle">European Union Standard</div>
+                        <h3 class="card-title">Europass Official</h3>
+                    </div>
+                    <p class="card-description">
+                        Authentic Europass structured layout with navy blue headers, left date timeline column, CEFR language grid, and digital skills.
+                    </p>
+                    <div class="card-tag-row">
+                        <span class="card-tag">Europass EU</span>
+                        <span class="card-tag">Official Format</span>
+                        <span class="card-tag">CEFR Language</span>
+                    </div>
+                    <div class="card-footer-buttons">
+                        <a href="template_07_europass.html" class="btn-open-template" target="_blank">
+                            <span>Customize & Edit</span>
+                        </a>
+                        <a href="template_07_europass.pdf" class="btn-view-pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 08: Vibrant Block Header -->
+            <div class="design-card" data-category="creative" data-title="Vibrant Block Header CV">
+                <div class="card-thumb-wrapper" onclick="openPreviewModal('template_08_vibrant_block.html', 'Template 08 - Vibrant Block Header', 'template_08_vibrant_block.pdf')">
+                    <img class="card-thumb-img" src="thumb_template_08_vibrant_block.png" alt="Template 08 Vibrant Block">
+                    <div class="thumb-overlay">
+                        <button class="quick-preview-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick Preview</span>
+                        </button>
+                    </div>
+                    <span class="card-floating-badge">TEMPLATE 08</span>
+                    <span class="card-pdf-size">1.50 MB PDF</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-header-block">
+                        <div class="card-subtitle">Modern Block Branding</div>
+                        <h3 class="card-title">Vibrant Block Header</h3>
+                    </div>
+                    <p class="card-description">
+                        Punchy high-contrast navy header block, cyan subtitle tag, clean 2-column body with skill badges, education, and achievements.
+                    </p>
+                    <div class="card-tag-row">
+                        <span class="card-tag">Block Header</span>
+                        <span class="card-tag">Cyan Accent</span>
+                        <span class="card-tag">Modern</span>
+                    </div>
+                    <div class="card-footer-buttons">
+                        <a href="template_08_vibrant_block.html" class="btn-open-template" target="_blank">
+                            <span>Customize & Edit</span>
+                        </a>
+                        <a href="template_08_vibrant_block.pdf" class="btn-view-pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 09: Creative Studio Bold -->
+            <div class="design-card" data-category="creative" data-title="Creative Studio Bold CV">
+                <div class="card-thumb-wrapper" onclick="openPreviewModal('template_09_creative_studio.html', 'Template 09 - Creative Studio Bold', 'template_09_creative_studio.pdf')">
+                    <img class="card-thumb-img" src="thumb_template_09_creative_studio.png" alt="Template 09 Creative Studio">
+                    <div class="thumb-overlay">
+                        <button class="quick-preview-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick Preview</span>
+                        </button>
+                    </div>
+                    <span class="card-floating-badge">TEMPLATE 09</span>
+                    <span class="card-pdf-size">1.55 MB PDF</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-header-block">
+                        <div class="card-subtitle">Charcoal High Contrast</div>
+                        <h3 class="card-title">Creative Studio Bold</h3>
+                    </div>
+                    <p class="card-description">
+                        Deep charcoal left sidebar with white typography, right-side structured experience timeline, client campaigns, and design credentials.
+                    </p>
+                    <div class="card-tag-row">
+                        <span class="card-tag">Dark Sidebar</span>
+                        <span class="card-tag">Agency Portfolio</span>
+                        <span class="card-tag">High Contrast</span>
+                    </div>
+                    <div class="card-footer-buttons">
+                        <a href="template_09_creative_studio.html" class="btn-open-template" target="_blank">
+                            <span>Customize & Edit</span>
+                        </a>
+                        <a href="template_09_creative_studio.pdf" class="btn-view-pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 10: Tech Teal Modern -->
+            <div class="design-card" data-category="tech" data-title="Tech Teal Modern CV">
+                <div class="card-thumb-wrapper" onclick="openPreviewModal('template_10_tech_teal.html', 'Template 10 - Tech Teal Modern', 'template_10_tech_teal.pdf')">
+                    <img class="card-thumb-img" src="thumb_template_10_tech_teal.png" alt="Template 10 Tech Teal">
+                    <div class="thumb-overlay">
+                        <button class="quick-preview-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick Preview</span>
+                        </button>
+                    </div>
+                    <span class="card-floating-badge">TEMPLATE 10</span>
+                    <span class="card-pdf-size">1.56 MB PDF</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-header-block">
+                        <div class="card-subtitle">Software & Engineering</div>
+                        <h3 class="card-title">Tech Teal Modern</h3>
+                    </div>
+                    <p class="card-description">
+                        Fresh teal green accents, structured technical skill badges, GitHub & repo links, cloud architecture accomplishments, and certifications.
+                    </p>
+                    <div class="card-tag-row">
+                        <span class="card-tag">Teal Accent</span>
+                        <span class="card-tag">Software Eng</span>
+                        <span class="card-tag">Cloud Badges</span>
+                    </div>
+                    <div class="card-footer-buttons">
+                        <a href="template_10_tech_teal.html" class="btn-open-template" target="_blank">
+                            <span>Customize & Edit</span>
+                        </a>
+                        <a href="template_10_tech_teal.pdf" class="btn-view-pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 11: Nordic Navy Timeline -->
+            <div class="design-card" data-category="executive" data-title="Nordic Navy Timeline CV">
+                <div class="card-thumb-wrapper" onclick="openPreviewModal('template_11_nordic_navy.html', 'Template 11 - Nordic Navy Timeline', 'template_11_nordic_navy.pdf')">
+                    <img class="card-thumb-img" src="thumb_template_11_nordic_navy.png" alt="Template 11 Nordic Navy">
+                    <div class="thumb-overlay">
+                        <button class="quick-preview-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick Preview</span>
+                        </button>
+                    </div>
+                    <span class="card-floating-badge">TEMPLATE 11</span>
+                    <span class="card-pdf-size">1.57 MB PDF</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-header-block">
+                        <div class="card-subtitle">Nordic Minimalist Line</div>
+                        <h3 class="card-title">Nordic Navy Timeline</h3>
+                    </div>
+                    <p class="card-description">
+                        Deep navy sidebar with circular framed portrait, timeline node dots with connecting vertical line, skill bars, and crisp typography.
+                    </p>
+                    <div class="card-tag-row">
+                        <span class="card-tag">Nordic Navy</span>
+                        <span class="card-tag">Timeline Node</span>
+                        <span class="card-tag">Executive</span>
+                    </div>
+                    <div class="card-footer-buttons">
+                        <a href="template_11_nordic_navy.html" class="btn-open-template" target="_blank">
+                            <span>Customize & Edit</span>
+                        </a>
+                        <a href="template_11_nordic_navy.pdf" class="btn-view-pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 12: Corporate Slate Executive -->
+            <div class="design-card" data-category="executive" data-title="Corporate Slate Executive CV">
+                <div class="card-thumb-wrapper" onclick="openPreviewModal('template_12_corporate_slate.html', 'Template 12 - Corporate Slate Executive', 'template_12_corporate_slate.pdf')">
+                    <img class="card-thumb-img" src="thumb_template_12_corporate_slate.png" alt="Template 12 Corporate Slate">
+                    <div class="thumb-overlay">
+                        <button class="quick-preview-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick Preview</span>
+                        </button>
+                    </div>
+                    <span class="card-floating-badge">TEMPLATE 12</span>
+                    <span class="card-pdf-size">1.54 MB PDF</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-header-block">
+                        <div class="card-subtitle">Framed Card Header</div>
+                        <h3 class="card-title">Corporate Slate Executive</h3>
+                    </div>
+                    <p class="card-description">
+                        Mark Johnson style executive framed card header, structured corporate counsel practice areas, high-impact transactions, and board governance.
+                    </p>
+                    <div class="card-tag-row">
+                        <span class="card-tag">Framed Card</span>
+                        <span class="card-tag">Corporate Counsel</span>
+                        <span class="card-tag">Legal Grid</span>
+                    </div>
+                    <div class="card-footer-buttons">
+                        <a href="template_12_corporate_slate.html" class="btn-open-template" target="_blank">
+                            <span>Customize & Edit</span>
+                        </a>
+                        <a href="template_12_corporate_slate.pdf" class="btn-view-pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 13: Sage Green Elegance -->
+            <div class="design-card" data-category="minimalist" data-title="Sage Green Elegance CV">
+                <div class="card-thumb-wrapper" onclick="openPreviewModal('template_13_sage_elegance.html', 'Template 13 - Sage Green Elegance', 'template_13_sage_elegance.pdf')">
+                    <img class="card-thumb-img" src="thumb_template_13_sage_elegance.png" alt="Template 13 Sage Elegance">
+                    <div class="thumb-overlay">
+                        <button class="quick-preview-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick Preview</span>
+                        </button>
+                    </div>
+                    <span class="card-floating-badge">TEMPLATE 13</span>
+                    <span class="card-pdf-size">1.56 MB PDF</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-header-block">
+                        <div class="card-subtitle">Healthcare & Administrative</div>
+                        <h3 class="card-title">Sage Green Elegance</h3>
+                    </div>
+                    <p class="card-description">
+                        Standardized from root cv.html with calming sage green tones, timeline connector nodes, skill pills, clean borders, and universal dummy data.
+                    </p>
+                    <div class="card-tag-row">
+                        <span class="card-tag">Sage Green</span>
+                        <span class="card-tag">Healthcare</span>
+                        <span class="card-tag">Clean Borders</span>
+                    </div>
+                    <div class="card-footer-buttons">
+                        <a href="template_13_sage_elegance.html" class="btn-open-template" target="_blank">
+                            <span>Customize & Edit</span>
+                        </a>
+                        <a href="template_13_sage_elegance.pdf" class="btn-view-pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 14: Diagonal Modern Header -->
+            <div class="design-card" data-category="tech" data-title="Diagonal Modern Header CV">
+                <div class="card-thumb-wrapper" onclick="openPreviewModal('template_14_diagonal_modern.html', 'Template 14 - Diagonal Modern Header', 'template_14_diagonal_modern.pdf')">
+                    <img class="card-thumb-img" src="thumb_template_14_diagonal_modern.png" alt="Template 14 Diagonal Modern">
+                    <div class="thumb-overlay">
+                        <button class="quick-preview-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick Preview</span>
+                        </button>
+                    </div>
+                    <span class="card-floating-badge">TEMPLATE 14</span>
+                    <span class="card-pdf-size">1.53 MB PDF</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-header-block">
+                        <div class="card-subtitle">Diagonal Clip-Path Header</div>
+                        <h3 class="card-title">Diagonal Modern Header</h3>
+                    </div>
+                    <p class="card-description">
+                        Standardized from root cv_editor.html with dynamic CSS clip-path polygon header, dark navy full-width contact bar, and cloud architecture layout.
+                    </p>
+                    <div class="card-tag-row">
+                        <span class="card-tag">Polygon Clip</span>
+                        <span class="card-tag">Dark Contact Bar</span>
+                        <span class="card-tag">Cloud Architect</span>
+                    </div>
+                    <div class="card-footer-buttons">
+                        <a href="template_14_diagonal_modern.html" class="btn-open-template" target="_blank">
+                            <span>Customize & Edit</span>
+                        </a>
+                        <a href="template_14_diagonal_modern.pdf" class="btn-view-pdf" target="_blank">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modal Quick Preview Viewer -->
+    <div class="preview-modal-backdrop" id="previewModal" onclick="closeModalOnBackdrop(event)">
+        <div class="preview-modal-window" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-title-area">
+                    <span class="modal-badge">A4 PREVIEW</span>
+                    <span class="modal-template-title" id="modalTemplateName">Template Preview</span>
+                </div>
+                <div class="modal-controls">
+                    <a id="modalOpenBtn" href="#" class="nav-btn primary" target="_blank" style="padding: 6px 14px; font-size: 11.5px;">
+                        <span>Open & Customize</span>
+                    </a>
+                    <a id="modalDownloadPdfBtn" href="#" class="nav-btn" target="_blank" style="padding: 6px 14px; font-size: 11.5px;">
+                        <span>Download PDF</span>
+                    </a>
+                    <button class="modal-close-btn" onclick="closePreviewModal()">&times;</button>
+                </div>
+            </div>
+            <div class="modal-stage" id="modalStage">
+                <div class="modal-frame-holder" id="modalFrameHolder">
+                    <iframe class="modal-iframe" id="modalIframe" src="about:blank"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="catalog-footer">
+        <div>All 14 CV templates operate completely offline and self-contained within this <code>templates/</code> folder.</div>
+        <div style="margin-top: 4px;">Edits are safely exported to <code>saved_cvs/</code> leaving template source files untouched. High-definition vector print standard calibrated to 1 MB – 3 MB.</div>
+    </footer>
+
+    <script>
+        function filterGallery(category, button) {
+            document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+            button.classList.add('active');
+
+            const cards = document.querySelectorAll('.design-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function handleSearch(query) {
+            const q = query.toLowerCase().trim();
+            const cards = document.querySelectorAll('.design-card');
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                if (text.includes(q)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openPreviewModal(htmlFile, templateTitle, pdfFile) {
+            document.getElementById('modalTemplateName').innerText = templateTitle;
+            document.getElementById('modalOpenBtn').href = htmlFile;
+            document.getElementById('modalDownloadPdfBtn').href = pdfFile;
+            document.getElementById('modalIframe').src = htmlFile;
+            document.getElementById('previewModal').style.display = 'flex';
+
+            // Auto-scale iframe to fit window height
+            setTimeout(() => {
+                const stage = document.getElementById('modalStage');
+                const holder = document.getElementById('modalFrameHolder');
+                if (stage && holder) {
+                    const availableHeight = stage.clientHeight - 40;
+                    const frameHeight = holder.clientHeight || 1122;
+                    const scale = Math.min(1, Math.max(0.5, availableHeight / frameHeight));
+                    holder.style.transform = `scale(${scale})`;
+                }
+            }, 100);
+        }
+
+        function closePreviewModal() {
+            document.getElementById('previewModal').style.display = 'none';
+            document.getElementById('modalIframe').src = 'about:blank';
+        }
+
+        function closeModalOnBackdrop(e) {
+            if (e.target.id === 'previewModal') {
+                closePreviewModal();
+            }
+        }
+
+        function triggerExportNotice() {
+            alert("To export all 14 templates to high-quality 1-3 MB PDFs at any time, run in terminal:\n\npython3 export_pdf.py\n\nAll 14 PDFs have already been generated and are ready in this folder!");
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closePreviewModal();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template 6 - Tech Executive Teal CV</title>
+    <link rel="stylesheet" href="cv_customizer.css">
+    <style>
+        :root {
+            --primary-accent: #134e5e;
+            --secondary-accent: #0e7490;
+            --sidebar-bg: #134e5e;
+            --page-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --headings-color: #0f172a;
+            --font-heading: 'Oswald', sans-serif;
+            --font-size-name: 34px;
+            --font-size-heading: 14px;
+            --font-size-base: 12px;
+            --line-height-base: 1.45;
+        }
+
+        .tech-teal-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background-color: var(--page-bg);
+        }
+
+        /* Dual-tone Top Header */
+        .top-dual-banner {
+            display: flex;
+            height: 110px;
+            position: relative;
+        }
+
+        .banner-left-accent {
+            width: 32%;
+            background-color: var(--sidebar-bg);
+            position: relative;
+        }
+
+        .banner-right-content {
+            width: 68%;
+            background-color: #e2e8f0;
+            padding: 24px 36px 16px 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Signature Overlapping Circular Ring Photo Badge */
+        .photo-ring-anchor {
+            position: absolute;
+            left: 50%;
+            bottom: -35px;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .photo-frame-ring {
+            width: 115px;
+            height: 115px;
+            border-radius: 50%;
+            border: 6px solid var(--sidebar-bg);
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .applicant-name {
+            font-size: var(--font-size-name);
+            font-weight: 700;
+            color: var(--headings-color);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0;
+            line-height: 1.1;
+            font-family: var(--font-heading);
+        }
+
+        .applicant-title {
+            font-size: 13.5px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            color: var(--secondary-accent);
+            text-transform: uppercase;
+            margin: 4px 0 0 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Lower Grid Split */
+        .tech-teal-grid {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        /* Left Petrol Teal Sidebar */
+        .teal-sidebar {
+            width: 32%;
+            background-color: var(--sidebar-bg);
+            color: #ffffff;
+            padding: 55px 22px 30px 22px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        /* Boxed Section Title */
+        .boxed-title {
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            padding: 5px 8px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #ffffff;
+            font-family: var(--font-heading);
+            margin: 0 0 10px 0;
+        }
+
+        .sidebar-contact-row {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 11px;
+            color: #f1f5f9;
+        }
+
+        .contact-item-iconic {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1.35;
+        }
+
+        .contact-circle-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            flex-shrink: 0;
+        }
+
+        .edu-entry-teal {
+            margin-bottom: 12px;
+            font-size: 11px;
+            color: #e2e8f0;
+        }
+
+        .edu-year-teal {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .edu-degree-teal {
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-size: 11.5px;
+            line-height: 1.3;
+        }
+
+        /* Slider Style Skill Meters */
+        .software-slider-item {
+            margin-bottom: 11px;
+        }
+
+        .slider-name {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .slider-track {
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.4);
+            position: relative;
+            margin: 6px 0;
+        }
+
+        .slider-thumb {
+            position: absolute;
+            top: -4px;
+            width: 9px;
+            height: 9px;
+            background: #ffffff;
+            border: 1px solid var(--sidebar-bg);
+            transform: translateX(-50%);
+        }
+
+        /* Right Content Area */
+        .teal-main {
+            width: 68%;
+            padding: 30px 36px 30px 36px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .teal-main-title {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--headings-color);
+            font-family: var(--font-heading);
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 4px;
+            margin: 0 0 10px 0;
+        }
+
+        .profile-copy {
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            line-height: var(--line-height-base);
+            margin: 0;
+        }
+
+        /* Chevron Timeline */
+        .timeline-teal {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 4px;
+        }
+
+        .timeline-teal-entry {
+            display: flex;
+            gap: 14px;
+            position: relative;
+        }
+
+        /* Chevron Badge for Dates */
+        .chevron-badge {
+            width: 44px;
+            height: 38px;
+            background-color: var(--primary-accent);
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+            line-height: 1.2;
+            clip-path: polygon(0 0, 75% 0, 100% 50%, 75% 100%, 0 100%);
+            padding-right: 6px;
+        }
+
+        .chevron-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            border-left: 2px solid #cbd5e1;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .chevron-content::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--primary-accent);
+        }
+
+        .teal-job-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--headings-color);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .teal-company {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin: 2px 0 6px 0;
+        }
+
+        .teal-bullets {
+            list-style: disc;
+            padding-left: 16px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+    </style>
+</head>
+<body data-template-id="template_10_tech_teal">
+
+<div class="cv-viewport">
+    <div class="cv-page">
+        <div class="tech-teal-container">
+            <!-- Top Dual-Tone Banner -->
+            <div class="top-dual-banner">
+                <div class="banner-left-accent">
+                    <!-- Overlapping Circular Photo Ring -->
+                    <div class="photo-ring-anchor photo-wrapper">
+                        <div class="photo-frame-ring photo-frame">
+                            <img id="cvProfileImg" src="dummy_profile.jpg" alt="Ethan Benjamin">
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-right-content">
+                    <h1 class="applicant-name" contenteditable="false">ETHAN BENJAMIN</h1>
+                    <div class="applicant-title" contenteditable="false">Senior Front-End & Web Solutions Architect</div>
+                </div>
+            </div>
+
+            <!-- Main Split -->
+            <div class="tech-teal-grid">
+                <!-- Left Deep Teal Sidebar -->
+                <aside class="teal-sidebar">
+                    <!-- Contacts -->
+                    <section>
+                        <div class="boxed-title" contenteditable="false">CONTACTS</div>
+                        <div class="sidebar-contact-row">
+                            <div class="contact-item-iconic">
+                                <span class="contact-circle-icon">📞</span>
+                                <span contenteditable="false">+1 (415) 890-2345</span>
+                            </div>
+                            <div class="contact-item-iconic">
+                                <span class="contact-circle-icon">✉️</span>
+                                <span contenteditable="false">ethan.benjamin@example.com</span>
+                            </div>
+                            <div class="contact-item-iconic">
+                                <span class="contact-circle-icon">📍</span>
+                                <span contenteditable="false">San Francisco, CA, USA</span>
+                            </div>
+                            <div class="contact-item-iconic">
+                                <span class="contact-circle-icon">🌐</span>
+                                <span contenteditable="false">github.com/ethan-benjamin</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Education -->
+                    <section>
+                        <div class="boxed-title" contenteditable="false">EDUCATION</div>
+                        <div class="edu-entry-teal item-wrapper">
+                            <div class="edu-year-teal" contenteditable="false">2014 – 2018</div>
+                            <div class="edu-degree-teal" contenteditable="false">B.S. in Computer Science</div>
+                            <div contenteditable="false">University of California, Berkeley</div>
+                        </div>
+                        <div class="edu-entry-teal item-wrapper">
+                            <div class="edu-year-teal" contenteditable="false">2012 – 2014</div>
+                            <div class="edu-degree-teal" contenteditable="false">Associate in Web Development</div>
+                            <div contenteditable="false">San Francisco City College</div>
+                        </div>
+                    </section>
+
+                    <!-- Software / Skills Sliders -->
+                    <section>
+                        <div class="boxed-title" contenteditable="false">TECHNICAL SKILLS</div>
+                        <div class="software-slider-item">
+                            <div class="slider-name" contenteditable="false">JavaScript / TypeScript</div>
+                            <div class="slider-track"><div class="slider-thumb" style="left: 95%;"></div></div>
+                        </div>
+                        <div class="software-slider-item">
+                            <div class="slider-name" contenteditable="false">React & Next.js</div>
+                            <div class="slider-track"><div class="slider-thumb" style="left: 90%;"></div></div>
+                        </div>
+                        <div class="software-slider-item">
+                            <div class="slider-name" contenteditable="false">HTML5 / CSS3 / SCSS</div>
+                            <div class="slider-track"><div class="slider-thumb" style="left: 98%;"></div></div>
+                        </div>
+                        <div class="software-slider-item">
+                            <div class="slider-name" contenteditable="false">Node.js & REST APIs</div>
+                            <div class="slider-track"><div class="slider-thumb" style="left: 85%;"></div></div>
+                        </div>
+                        <div class="software-slider-item">
+                            <div class="slider-name" contenteditable="false">UI/UX & Figma Design</div>
+                            <div class="slider-track"><div class="slider-thumb" style="left: 80%;"></div></div>
+                        </div>
+                        <div class="software-slider-item">
+                            <div class="slider-name" contenteditable="false">Git & CI/CD Pipelines</div>
+                            <div class="slider-track"><div class="slider-thumb" style="left: 88%;"></div></div>
+                        </div>
+                    </section>
+                </aside>
+
+                <!-- Right Main Area -->
+                <main class="teal-main">
+                    <!-- Profile -->
+                    <section>
+                        <h2 class="teal-main-title" contenteditable="false">PROFILE</h2>
+                        <p class="profile-copy" contenteditable="false">
+                            Innovative Front-End Engineer with 6+ years of experience crafting high-performance, accessible, and responsive digital web applications. Expert in translating complex UI/UX designs into pixel-perfect modular code. Proven track record leading front-end architecture and collaborating across cross-functional product teams.
+                        </p>
+                    </section>
+
+                    <!-- Work Experience -->
+                    <section>
+                        <h2 class="teal-main-title" contenteditable="false">WORK EXPERIENCE</h2>
+                        <div class="timeline-teal">
+                            <div class="timeline-teal-entry item-wrapper">
+                                <div class="chevron-badge">
+                                    <span>2020</span>
+                                    <span>PRES</span>
+                                </div>
+                                <div class="chevron-content">
+                                    <h4 class="teal-job-title" contenteditable="false">Senior Front-End Architect</h4>
+                                    <div class="teal-company" contenteditable="false">Apex Digital Systems | San Francisco, CA</div>
+                                    <ul class="teal-bullets">
+                                        <li contenteditable="false">Architected scalable React/TypeScript web apps serving 1.5M+ active monthly users with 99.9% uptime.</li>
+                                        <li contenteditable="false">Reduced initial bundle load time by 42% through code-splitting, lazy loading, and asset optimization.</li>
+                                        <li contenteditable="false">Mentored 6 junior engineers and established automated code formatting and Jest/Playwright testing.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="timeline-teal-entry item-wrapper">
+                                <div class="chevron-badge">
+                                    <span>2018</span>
+                                    <span>2020</span>
+                                </div>
+                                <div class="chevron-content">
+                                    <h4 class="teal-job-title" contenteditable="false">Front-End Developer</h4>
+                                    <div class="teal-company" contenteditable="false">CloudPulse Technologies | San Jose, CA</div>
+                                    <ul class="teal-bullets">
+                                        <li contenteditable="false">Built responsive customer analytics dashboards with dynamic D3/Chart.js interactive visualizations.</li>
+                                        <li contenteditable="false">Collaborated closely with product designers to implement WCAG 2.1 AA accessibility standards.</li>
+                                        <li contenteditable="false">Refactored legacy jQuery codebase to modern component-driven React architecture.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="timeline-teal-entry item-wrapper">
+                                <div class="chevron-badge">
+                                    <span>2016</span>
+                                    <span>2018</span>
+                                </div>
+                                <div class="chevron-content">
+                                    <h4 class="teal-job-title" contenteditable="false">Web Development Associate</h4>
+                                    <div class="teal-company" contenteditable="false">Vanguard Web Labs | Oakland, CA</div>
+                                    <ul class="teal-bullets">
+                                        <li contenteditable="false">Developed 20+ responsive e-commerce landing pages with high conversion rates.</li>
+                                        <li contenteditable="false">Integrated payment gateways and RESTful backend APIs seamlessly.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="cv_customizer.js"></script>
+</body>
+</html>

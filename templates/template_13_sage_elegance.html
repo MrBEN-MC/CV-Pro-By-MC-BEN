@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template 13 - Sage Green Elegance CV</title>
+    <link rel="stylesheet" href="cv_customizer.css">
+    <style>
+        :root {
+            --primary-accent: #52796f;
+            --secondary-accent: #6faa8a;
+            --sidebar-bg: #f4f7f5;
+            --page-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --headings-color: #1e293b;
+            --font-size-name: 26px;
+            --font-size-heading: 13.5px;
+            --font-size-base: 12px;
+        }
+
+        .cv-grid {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Sidebar (Left) */
+        .sidebar {
+            width: 35%;
+            background-color: var(--sidebar-bg);
+            padding: 34px 24px 26px 26px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            border-right: 1px solid rgba(82, 121, 111, 0.15);
+        }
+
+        .sidebar-header {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .applicant-name {
+            font-size: var(--font-size-name);
+            font-weight: 800;
+            color: var(--primary-accent);
+            letter-spacing: 0.5px;
+            line-height: 1.15;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .applicant-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--secondary-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 2px 0 0 0;
+        }
+
+        .sidebar-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .sidebar-title {
+            font-size: var(--font-size-heading);
+            font-weight: 700;
+            color: var(--primary-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--secondary-accent);
+            padding-bottom: 4px;
+            margin: 0;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            font-size: 11.5px;
+            color: var(--text-secondary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1.35;
+        }
+
+        .contact-icon {
+            width: 14px;
+            height: 14px;
+            color: var(--primary-accent);
+            flex-shrink: 0;
+        }
+
+        .edu-entry {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-bottom: 8px;
+        }
+
+        .edu-degree {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .edu-school {
+            font-size: 11.5px;
+            color: var(--text-secondary);
+        }
+
+        .edu-year {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .skill-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-pill {
+            background-color: #e3ece8;
+            color: #2f4841;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Main Content (Right) */
+        .main-content {
+            width: 65%;
+            padding: 34px 32px 26px 32px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            background-color: var(--page-bg);
+        }
+
+        .content-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .section-header {
+            font-size: var(--font-size-heading);
+            font-weight: 700;
+            color: var(--primary-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 4px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-header::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--secondary-accent);
+            border-radius: 50%;
+        }
+
+        .summary-text {
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .timeline-entry {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 12px;
+            border-left: 2px solid #d1ded8;
+        }
+
+        .timeline-entry::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--secondary-accent);
+        }
+
+        .entry-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .entry-role {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--headings-color);
+            margin: 0;
+        }
+
+        .entry-date {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--primary-accent);
+        }
+
+        .entry-company {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .entry-bullets {
+            list-style: disc;
+            padding-left: 16px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+    </style>
+</head>
+<body data-template-id="template_13_sage_elegance">
+
+<div class="page-container">
+    <div class="cv-page cv-paper-bg" id="cvPage">
+        <div class="cv-grid">
+            <!-- Left Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <div class="photo-wrapper">
+                        <div class="photo-frame">
+                            <img id="cvProfileImg" src="dummy_profile.jpg" alt="Profile Picture">
+                        </div>
+                    </div>
+                    <div>
+                        <h1 class="applicant-name" contenteditable="false">ALEX<br>MORGAN</h1>
+                        <p class="applicant-title" contenteditable="false">Executive Healthcare Administrator</p>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title" contenteditable="false">CONTACT</h3>
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span contenteditable="false">alex.morgan@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span contenteditable="false">+1 (555) 234-5678</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <span contenteditable="false">Chicago, IL, United States</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                            <span contenteditable="false">linkedin.com/in/alex-morgan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title" contenteditable="false">EDUCATION</h3>
+                    <div class="edu-entry">
+                        <div class="edu-degree" contenteditable="false">Master of Health Administration (MHA)</div>
+                        <div class="edu-school" contenteditable="false">Northwestern University</div>
+                        <div class="edu-year" contenteditable="false">2016 — 2018</div>
+                    </div>
+                    <div class="edu-entry">
+                        <div class="edu-degree" contenteditable="false">B.S. Health Sciences</div>
+                        <div class="edu-school" contenteditable="false">University of Illinois</div>
+                        <div class="edu-year" contenteditable="false">2012 — 2016</div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title" contenteditable="false">CORE SKILLS</h3>
+                    <div class="skill-pills">
+                        <span class="skill-pill">Clinical Operations</span>
+                        <span class="skill-pill">Budget Management</span>
+                        <span class="skill-pill">Healthcare Compliance</span>
+                        <span class="skill-pill">Patient Experience</span>
+                        <span class="skill-pill">EHR Systems (Epic)</span>
+                        <span class="skill-pill">Team Leadership</span>
+                        <span class="skill-pill">Resource Allocation</span>
+                        <span class="skill-pill">Quality Assurance</span>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title" contenteditable="false">LANGUAGES</h3>
+                    <div class="contact-list">
+                        <div><strong>English:</strong> Native / Bilingual</div>
+                        <div><strong>Spanish:</strong> Professional Working</div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Summary -->
+                <section class="content-section">
+                    <h2 class="section-header" contenteditable="false">PROFESSIONAL SUMMARY</h2>
+                    <p class="summary-text" contenteditable="false">
+                        Dedicated Healthcare Administrator with 8+ years of expertise managing clinical department operations, regulatory accreditations, and multi-disciplinary teams in high-volume medical centers. Proven track record elevating patient satisfaction scores while achieving consistent fiscal performance and staffing efficiency.
+                    </p>
+                </section>
+
+                <!-- Experience -->
+                <section class="content-section">
+                    <h2 class="section-header" contenteditable="false">EXPERIENCE</h2>
+
+                    <div class="timeline-entry item-wrapper">
+                        <div class="entry-top">
+                            <h4 class="entry-role" contenteditable="false">Director of Clinical Operations</h4>
+                            <span class="entry-date" contenteditable="false">2021 — PRESENT</span>
+                        </div>
+                        <div class="entry-company" contenteditable="false">Midwest Memorial Health System • Chicago, IL</div>
+                        <ul class="entry-bullets">
+                            <li contenteditable="false">Direct administrative operations for outpatient clinics with 45+ physician staff and 120+ clinical personnel.</li>
+                            <li contenteditable="false">Increased clinic patient throughput by 22% through patient journey mapping and electronic check-in automation.</li>
+                            <li contenteditable="false">Maintained 100% Joint Commission compliance audit rating across 3 consecutive inspection cycles.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-entry item-wrapper">
+                        <div class="entry-top">
+                            <h4 class="entry-role" contenteditable="false">Healthcare Operations Manager</h4>
+                            <span class="entry-date" contenteditable="false">2018 — 2021</span>
+                        </div>
+                        <div class="entry-company" contenteditable="false">Lakeside Medical Pavilion • Chicago, IL</div>
+                        <ul class="entry-bullets">
+                            <li contenteditable="false">Managed day-to-day administrative staffing, supplier contracts, and clinical scheduling.</li>
+                            <li contenteditable="false">Spearheaded telehealth onboarding initiative expanding remote patient appointments by 400% during pandemic operations.</li>
+                            <li contenteditable="false">Reduced medical billing discrepancies by 18% via staff cross-training programs.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-entry item-wrapper">
+                        <div class="entry-top">
+                            <h4 class="entry-role" contenteditable="false">Administrative Fellow</h4>
+                            <span class="entry-date" contenteditable="false">2016 — 2018</span>
+                        </div>
+                        <div class="entry-company" contenteditable="false">Northwestern Memorial Hospital • Chicago, IL</div>
+                        <ul class="entry-bullets">
+                            <li contenteditable="false">Completed rotational leadership residency in hospital finance, operations, and quality improvement.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Certifications -->
+                <section class="content-section">
+                    <h2 class="section-header" contenteditable="false">CERTIFICATIONS</h2>
+                    <div class="timeline-entry item-wrapper" style="border-left-color: transparent; padding-left: 0;">
+                        <ul class="entry-bullets">
+                            <li contenteditable="false"><strong>FACHE:</strong> Fellow of the American College of Healthcare Executives (2020).</li>
+                            <li contenteditable="false"><strong>Lean Six Sigma Green Belt:</strong> Healthcare Process Optimization (2019).</li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</div>
+
+<script src="cv_customizer.js"></script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template 5 - Vibrant Modern Block CV</title>
+    <link rel="stylesheet" href="cv_customizer.css">
+    <style>
+        :root {
+            --primary-accent: #0284c7;
+            --secondary-accent: #0ea5e9;
+            --sidebar-bg: #282c37;
+            --page-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --headings-color: #0f172a;
+            --font-size-name: 28px;
+            --font-size-heading: 13.5px;
+            --font-size-base: 12px;
+            --line-height-base: 1.45;
+        }
+
+        .block-grid {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Dark Charcoal Left Sidebar */
+        .block-sidebar {
+            width: 32%;
+            background-color: var(--sidebar-bg);
+            color: #f8fafc;
+            padding: 30px 24px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .sidebar-photo-center {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 4px;
+        }
+
+        .skill-group-title {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            margin: 0 0 12px 0;
+        }
+
+        .meter-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 12px;
+        }
+
+        .meter-label {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 5px;
+            background: #475569;
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--secondary-accent);
+            border-radius: 3px;
+        }
+
+        /* Right Content Area */
+        .block-main {
+            width: 68%;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--page-bg);
+        }
+
+        /* Cyan Header Card */
+        .vibrant-header-card {
+            background-color: var(--primary-accent);
+            color: #ffffff;
+            padding: 26px 36px 22px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin: 22px 28px 18px 28px;
+            border-radius: 3px;
+        }
+
+        .applicant-name {
+            font-size: var(--font-size-name);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .applicant-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e0f2fe;
+            margin: 0 0 8px 0;
+        }
+
+        .header-contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 11.5px;
+            color: #f0f9ff;
+        }
+
+        .header-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .header-icon {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* Body Sections with Badge Titles */
+        .block-body-content {
+            padding: 0 36px 25px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            box-sizing: border-box;
+        }
+
+        .badge-header {
+            display: inline-block;
+            background-color: var(--primary-accent);
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 2px;
+            font-size: var(--font-size-heading);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 0 0 8px 0;
+            align-self: flex-start;
+        }
+
+        .summary-block-text {
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            line-height: var(--line-height-base);
+            margin: 0;
+        }
+
+        .job-item {
+            margin-bottom: 14px;
+        }
+
+        .job-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .job-title-role {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--headings-color);
+            margin: 0;
+        }
+
+        .job-dates {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .job-company-loc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin: 0 0 5px 0;
+        }
+
+        .job-bullet-list {
+            list-style: disc;
+            padding-left: 18px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+    </style>
+</head>
+<body data-template-id="template_08_vibrant_block">
+
+<div class="cv-viewport">
+    <div class="cv-page">
+        <div class="block-grid">
+            <!-- Left Dark Sidebar -->
+            <aside class="block-sidebar">
+                <div class="sidebar-photo-center">
+                    <div class="photo-wrapper">
+                        <div class="photo-frame">
+                            <img id="cvProfileImg" src="dummy_profile.jpg" alt="Emily Jones">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hard Skills -->
+                <div>
+                    <h3 class="skill-group-title" contenteditable="false">HARD SKILLS</h3>
+                    <div class="meter-item">
+                        <span class="meter-label" contenteditable="false">Classroom Management</span>
+                        <div class="progress-track"><div class="progress-fill" style="width: 100%;"></div></div>
+                    </div>
+                    <div class="meter-item">
+                        <span class="meter-label" contenteditable="false">Lesson Planning & Design</span>
+                        <div class="progress-track"><div class="progress-fill" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="meter-item">
+                        <span class="meter-label" contenteditable="false">Curriculum Development</span>
+                        <div class="progress-track"><div class="progress-fill" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="meter-item">
+                        <span class="meter-label" contenteditable="false">EdTech & Digital Tools</span>
+                        <div class="progress-track"><div class="progress-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="meter-item">
+                        <span class="meter-label" contenteditable="false">Grading & Formative Assessment</span>
+                        <div class="progress-track"><div class="progress-fill" style="width: 95%;"></div></div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div>
+                    <h3 class="skill-group-title" contenteditable="false">SOFT SKILLS</h3>
+                    <div class="meter-item">
+                        <span class="meter-label" contenteditable="false">Empathy & Active Listening</span>
+                        <div class="progress-track"><div class="progress-fill" style="width: 100%;"></div></div>
+                    </div>
+                    <div class="meter-item">
+                        <span class="meter-label" contenteditable="false">Confidence & Public Speaking</span>
+                        <div class="progress-track"><div class="progress-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="meter-item">
+                        <span class="meter-label" contenteditable="false">Organization & Record Keeping</span>
+                        <div class="progress-track"><div class="progress-fill" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="meter-item">
+                        <span class="meter-label" contenteditable="false">Time Management & Prioritization</span>
+                        <div class="progress-track"><div class="progress-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="meter-item">
+                        <span class="meter-label" contenteditable="false">Parent-Teacher Communication</span>
+                        <div class="progress-track"><div class="progress-fill" style="width: 100%;"></div></div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="block-main">
+                <!-- Cyan Name Card -->
+                <header class="vibrant-header-card">
+                    <h1 class="applicant-name" contenteditable="false">EMILY JONES</h1>
+                    <div class="applicant-title" contenteditable="false">Certified Elementary School Educator</div>
+                    <div class="header-contact-items">
+                        <div class="header-contact-item">
+                            <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span contenteditable="false">emily.jones@example.com</span>
+                        </div>
+                        <div class="header-contact-item">
+                            <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span contenteditable="false">(111) 234-5678</span>
+                        </div>
+                        <div class="header-contact-item">
+                            <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <span contenteditable="false">Tucson, AZ, United States</span>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="block-body-content">
+                    <!-- Summary -->
+                    <section>
+                        <div class="badge-header" contenteditable="false">SUMMARY</div>
+                        <p class="summary-block-text" contenteditable="false">
+                            Caring and compassionate elementary educator with 5+ years of classroom experience and active State Educator License. Improved student test scores by 20% and pass rate by 30% in one academic year. Excited to leverage student-centric learning methods and proven classroom management at your institution.
+                        </p>
+                    </section>
+
+                    <!-- Work Experience -->
+                    <section>
+                        <div class="badge-header" contenteditable="false">WORK EXPERIENCE</div>
+
+                        <div class="job-item item-wrapper">
+                            <div class="job-header-row">
+                                <h4 class="job-title-role" contenteditable="false">Elementary School Teacher (4th Grade)</h4>
+                                <span class="job-dates" contenteditable="false">Aug 2018 – Present</span>
+                            </div>
+                            <div class="job-company-loc" contenteditable="false">Central Tucson Elementary, Tucson, AZ</div>
+                            <ul class="job-bullet-list">
+                                <li contenteditable="false">Improved student test scores by 20% and pass rate by 30% from 2018-19 school year to 2019-20.</li>
+                                <li contenteditable="false">Won "Teacher of the Year Award" in 2020 for excellence in digital remote instruction.</li>
+                                <li contenteditable="false">Implemented innovative interactive math quiz modules to boost knowledge retention.</li>
+                            </ul>
+                        </div>
+
+                        <div class="job-item item-wrapper">
+                            <div class="job-header-row">
+                                <h4 class="job-title-role" contenteditable="false">Elementary School Teacher (3rd Grade)</h4>
+                                <span class="job-dates" contenteditable="false">Aug 2016 – Jul 2018</span>
+                            </div>
+                            <div class="job-company-loc" contenteditable="false">Desert Hills Elementary, Flagstaff, AZ</div>
+                            <ul class="job-bullet-list">
+                                <li contenteditable="false">Created a nurturing and engaging environment that welcomed all diverse students.</li>
+                                <li contenteditable="false">Established and effectively enforced classroom community ground rules.</li>
+                                <li contenteditable="false">Liaised with parents and school counselors to support students with learning difficulties.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Education -->
+                    <section>
+                        <div class="badge-header" contenteditable="false">EDUCATION</div>
+
+                        <div class="job-item item-wrapper">
+                            <div class="job-header-row">
+                                <h4 class="job-title-role" contenteditable="false">Bachelor of Science in Elementary Education</h4>
+                                <span class="job-dates" contenteditable="false">Graduated 2015</span>
+                            </div>
+                            <div class="job-company-loc" contenteditable="false">Northern Arizona University, Flagstaff, AZ</div>
+                            <ul class="job-bullet-list">
+                                <li contenteditable="false">Graduated Magna Cum Laude; GPA: 3.84 / 4.0</li>
+                                <li contenteditable="false">Coursework: Child Psychology, Curriculum Development, Classroom Management.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Certificates -->
+                    <section>
+                        <div class="badge-header" contenteditable="false">CERTIFICATES</div>
+                        <div class="job-item item-wrapper">
+                            <div class="job-header-row">
+                                <h4 class="job-title-role" contenteditable="false">Arizona State Educator License</h4>
+                                <span class="job-dates" contenteditable="false">Earned 2015 (Active)</span>
+                            </div>
+                            <div class="job-company-loc" contenteditable="false">Certified by the Arizona Department of Education</div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+<script src="cv_customizer.js"></script>
+</body>
+</html>

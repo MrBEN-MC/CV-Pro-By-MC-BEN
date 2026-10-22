@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template 7 - Creative Studio CV</title>
+    <link rel="stylesheet" href="cv_customizer.css">
+    <style>
+        :root {
+            --primary-accent: #00897b;
+            --secondary-accent: #26a69a;
+            --sidebar-bg: #2d333b;
+            --page-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --headings-color: #0f172a;
+            --font-size-name: 30px;
+            --font-size-heading: 14px;
+            --font-size-base: 12px;
+            --line-height-base: 1.45;
+        }
+
+        .creative-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background-color: var(--page-bg);
+        }
+
+        /* Top Header */
+        .creative-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 38px 18px 38px;
+        }
+
+        .header-title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .applicant-name {
+            font-size: var(--font-size-name);
+            font-weight: 800;
+            color: var(--headings-color);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .applicant-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .title-dash {
+            width: 35px;
+            height: 1.5px;
+            background-color: var(--text-muted);
+        }
+
+        /* Teal Angled Profile Banner */
+        .angled-profile-banner {
+            background-color: var(--primary-accent);
+            color: #ffffff;
+            padding: 16px 38px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .angled-profile-banner::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: 40px;
+            width: 30px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.2);
+            transform: skewX(-30deg);
+        }
+
+        .profile-banner-heading {
+            font-size: 13.5px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0 0 6px 0;
+        }
+
+        .profile-banner-text {
+            font-size: 11.5px;
+            line-height: 1.5;
+            color: #e0f2f1;
+            margin: 0;
+        }
+
+        /* Lower Content Split */
+        .creative-lower-grid {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        /* Left Main Content */
+        .creative-left-content {
+            width: 65%;
+            padding: 26px 32px 25px 38px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .creative-section-title {
+            font-size: var(--font-size-heading);
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--headings-color);
+            margin: 0 0 14px 0;
+        }
+
+        /* Concentric Ring Timeline */
+        .concentric-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .concentric-entry {
+            display: flex;
+            gap: 14px;
+            position: relative;
+        }
+
+        .concentric-dates {
+            width: 48px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--headings-color);
+            line-height: 1.25;
+            text-align: right;
+            flex-shrink: 0;
+            padding-top: 2px;
+        }
+
+        .concentric-body {
+            border-left: 1.5px solid #cbd5e1;
+            padding-left: 16px;
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .concentric-body::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            border: 2px solid var(--primary-accent);
+            box-shadow: inset 0 0 0 2px #ffffff;
+        }
+
+        .concentric-job-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--headings-color);
+            margin: 0;
+        }
+
+        .concentric-company {
+            font-size: 11.5px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin: 2px 0 5px 0;
+        }
+
+        .concentric-bullets {
+            list-style: disc;
+            padding-left: 16px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        /* Right Dark Sidebar */
+        .creative-right-sidebar {
+            width: 35%;
+            background-color: var(--sidebar-bg);
+            color: #ffffff;
+            padding: 26px 24px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .sidebar-heading-light {
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin: 0 0 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 5px;
+        }
+
+        .contact-row-styled {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 11px;
+            color: #e2e8f0;
+        }
+
+        .contact-item-circle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-teal-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: var(--primary-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            color: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .sidebar-edu-block {
+            margin-bottom: 12px;
+            font-size: 11px;
+            color: #cbd5e1;
+        }
+
+        .edu-year-tag {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--secondary-accent);
+            margin-bottom: 2px;
+        }
+
+        .edu-degree-light {
+            font-size: 12px;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .skill-bar-styled {
+            margin-bottom: 11px;
+        }
+
+        .skill-name-styled {
+            font-size: 11px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .skill-track-styled {
+            width: 100%;
+            height: 5px;
+            background: #475569;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-fill-styled {
+            height: 100%;
+            background: var(--primary-accent);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body data-template-id="template_09_creative_studio">
+
+<div class="cv-viewport">
+    <div class="cv-page">
+        <div class="creative-container">
+            <!-- Top Header -->
+            <header class="creative-header">
+                <div class="header-title-group">
+                    <h1 class="applicant-name" contenteditable="false">ALIYA CASSIN</h1>
+                    <div class="applicant-title">
+                        <span contenteditable="false">Creative Brand & UI/UX Art Director</span>
+                        <div class="title-dash"></div>
+                    </div>
+                </div>
+
+                <div class="photo-wrapper">
+                    <div class="photo-frame">
+                        <img id="cvProfileImg" src="dummy_profile.jpg" alt="Aliya Cassin">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Angled Teal Profile Banner -->
+            <div class="angled-profile-banner">
+                <div class="profile-banner-heading" contenteditable="false">PROFILE</div>
+                <p class="profile-banner-text" contenteditable="false">
+                    Accomplished Creative Director and Senior Visual Designer with 8+ years leading award-winning digital design, user experiences, and multinational brand identities. Passionate about marrying aesthetic elegance with technical feasibility and high conversion rates.
+                </p>
+            </div>
+
+            <!-- Lower Grid Split -->
+            <div class="creative-lower-grid">
+                <!-- Left Experience Area -->
+                <main class="creative-left-content">
+                    <h2 class="creative-section-title" contenteditable="false">WORK EXPERIENCE</h2>
+
+                    <div class="concentric-timeline">
+                        <div class="concentric-entry item-wrapper">
+                            <div class="concentric-dates" contenteditable="false">2019<br>PRES</div>
+                            <div class="concentric-body">
+                                <h4 class="concentric-job-title" contenteditable="false">Senior Creative Director</h4>
+                                <div class="concentric-company" contenteditable="false">Studio Forma Design | Los Angeles, CA</div>
+                                <ul class="concentric-bullets">
+                                    <li contenteditable="false">Direct visual design and digital branding for Fortune 500 retail and tech clients.</li>
+                                    <li contenteditable="false">Lead an agile cross-functional creative team of 12 designers, copywriters, and motion artists.</li>
+                                    <li contenteditable="false">Spearheaded the complete global brand relaunch for Apex Lifestyle, growing engagement by 38%.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concentric-entry item-wrapper">
+                            <div class="concentric-dates" contenteditable="false">2015<br>2019</div>
+                            <div class="concentric-body">
+                                <h4 class="concentric-job-title" contenteditable="false">Lead UI/UX Product Designer</h4>
+                                <div class="concentric-company" contenteditable="false">Nexora Labs | San Francisco, CA</div>
+                                <ul class="concentric-bullets">
+                                    <li contenteditable="false">Designed mobile applications and SaaS dashboards from wireframes to high-fidelity Figma prototypes.</li>
+                                    <li contenteditable="false">Conducted comprehensive user research, usability testing, and accessibility compliance audits.</li>
+                                    <li contenteditable="false">Collaborated directly with front-end engineers to ensure flawless interactive implementation.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concentric-entry item-wrapper">
+                            <div class="concentric-dates" contenteditable="false">2012<br>2015</div>
+                            <div class="concentric-body">
+                                <h4 class="concentric-job-title" contenteditable="false">Junior Graphic Designer</h4>
+                                <div class="concentric-company" contenteditable="false">PixelCraft Agency | Seattle, WA</div>
+                                <ul class="concentric-bullets">
+                                    <li contenteditable="false">Created vector marketing assets, promotional collateral, packaging, and digital display banners.</li>
+                                    <li contenteditable="false">Maintained strict brand guidelines and delivered print-ready typography layouts on tight deadlines.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- Right Charcoal Sidebar -->
+                <aside class="creative-right-sidebar">
+                    <!-- Contacts -->
+                    <section>
+                        <h3 class="sidebar-heading-light" contenteditable="false">CONTACTS</h3>
+                        <div class="contact-row-styled">
+                            <div class="contact-item-circle">
+                                <div class="contact-teal-dot">📱</div>
+                                <span contenteditable="false">+1 415 892 0192</span>
+                            </div>
+                            <div class="contact-item-circle">
+                                <div class="contact-teal-dot">✉️</div>
+                                <span contenteditable="false">aliya.cassin@example.com</span>
+                            </div>
+                            <div class="contact-item-circle">
+                                <div class="contact-teal-dot">🌐</div>
+                                <span contenteditable="false">www.aliyacassin.design</span>
+                            </div>
+                            <div class="contact-item-circle">
+                                <div class="contact-teal-dot">📍</div>
+                                <span contenteditable="false">Los Angeles, CA, USA</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Education -->
+                    <section>
+                        <h3 class="sidebar-heading-light" contenteditable="false">EDUCATION</h3>
+                        <div class="sidebar-edu-block item-wrapper">
+                            <div class="edu-year-tag" contenteditable="false">2012</div>
+                            <div class="edu-degree-light" contenteditable="false">B.F.A. in Graphic Design</div>
+                            <div contenteditable="false">Rhode Island School of Design (RISD)</div>
+                        </div>
+                        <div class="sidebar-edu-block item-wrapper">
+                            <div class="edu-year-tag" contenteditable="false">2008</div>
+                            <div class="edu-degree-light" contenteditable="false">Diploma in Digital Arts</div>
+                            <div contenteditable="false">Seattle Academy of Arts</div>
+                        </div>
+                    </section>
+
+                    <!-- Skills -->
+                    <section>
+                        <h3 class="sidebar-heading-light" contenteditable="false">DESIGN SKILLS</h3>
+                        <div class="skill-bar-styled">
+                            <div class="skill-name-styled" contenteditable="false">Adobe Creative Cloud (Ps, Ai, Id)</div>
+                            <div class="skill-track-styled"><div class="skill-fill-styled" style="width: 98%;"></div></div>
+                        </div>
+                        <div class="skill-bar-styled">
+                            <div class="skill-name-styled" contenteditable="false">Figma & Design Systems</div>
+                            <div class="skill-track-styled"><div class="skill-fill-styled" style="width: 95%;"></div></div>
+                        </div>
+                        <div class="skill-bar-styled">
+                            <div class="skill-name-styled" contenteditable="false">UI/UX Prototyping</div>
+                            <div class="skill-track-styled"><div class="skill-fill-styled" style="width: 92%;"></div></div>
+                        </div>
+                        <div class="skill-bar-styled">
+                            <div class="skill-name-styled" contenteditable="false">Brand Identity Strategy</div>
+                            <div class="skill-track-styled"><div class="skill-fill-styled" style="width: 94%;"></div></div>
+                        </div>
+                        <div class="skill-bar-styled">
+                            <div class="skill-name-styled" contenteditable="false">Motion Graphics & 3D</div>
+                            <div class="skill-track-styled"><div class="skill-fill-styled" style="width: 78%;"></div></div>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="cv_customizer.js"></script>
+</body>
+</html>

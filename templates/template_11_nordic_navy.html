@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template 8 - Nordic Midnight Navy CV</title>
+    <link rel="stylesheet" href="cv_customizer.css">
+    <style>
+        :root {
+            --primary-accent: #243042;
+            --secondary-accent: #3b82f6;
+            --sidebar-bg: #243042;
+            --page-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --headings-color: #0f172a;
+            --font-size-name: 32px;
+            --font-size-heading: 13.5px;
+            --font-size-base: 12px;
+            --line-height-base: 1.45;
+        }
+
+        .nordic-grid {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Left Midnight Navy Sidebar */
+        .nordic-sidebar {
+            width: 33%;
+            background-color: var(--sidebar-bg);
+            color: #ffffff;
+            padding: 36px 24px 30px 26px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .photo-center-block {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 6px;
+        }
+
+        .nordic-side-heading {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 4px;
+            margin: 0 0 10px 0;
+        }
+
+        .nordic-contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 11px;
+            color: #e2e8f0;
+        }
+
+        .contact-row-icon {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1.35;
+        }
+
+        .contact-icon-circle {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #ffffff;
+            color: var(--sidebar-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .nordic-edu-item {
+            margin-bottom: 12px;
+            font-size: 11.5px;
+        }
+
+        .nordic-edu-title {
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1px;
+        }
+
+        .nordic-edu-sub {
+            color: #cbd5e1;
+            font-size: 11px;
+        }
+
+        .nordic-edu-years {
+            font-size: 10.5px;
+            color: #94a3b8;
+        }
+
+        .skills-subgroup-title {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #93c5fd;
+            margin: 8px 0 4px 0;
+        }
+
+        .nordic-skills-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 11.5px;
+            color: #e2e8f0;
+        }
+
+        /* Right Content Area */
+        .nordic-main {
+            width: 67%;
+            padding: 38px 36px 30px 36px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            background-color: var(--page-bg);
+        }
+
+        /* Header Two-Weight Name */
+        .nordic-header-group {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .applicant-name {
+            font-size: var(--font-size-name);
+            margin: 0;
+            line-height: 1.1;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .name-bold {
+            font-weight: 800;
+            color: var(--headings-color);
+        }
+
+        .name-light {
+            font-weight: 300;
+            color: var(--headings-color);
+        }
+
+        .applicant-title {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 3px 0 0 0;
+        }
+
+        .nordic-intro-copy {
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            line-height: var(--line-height-base);
+            margin: 4px 0 0 0;
+        }
+
+        .nordic-section-title {
+            font-size: var(--font-size-heading);
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--headings-color);
+            border-bottom: 1.5px solid #cbd5e1;
+            padding-bottom: 4px;
+            margin: 0 0 10px 0;
+        }
+
+        /* Work Experience Timeline */
+        .nordic-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .nordic-job-block {
+            display: flex;
+            gap: 14px;
+            position: relative;
+        }
+
+        .nordic-job-line-anchor {
+            border-left: 1.5px solid #cbd5e1;
+            padding-left: 16px;
+            position: relative;
+            flex-grow: 1;
+        }
+
+        .nordic-job-line-anchor::before {
+            content: '';
+            position: absolute;
+            left: -5.5px;
+            top: 4px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            border: 2px solid var(--headings-color);
+        }
+
+        .nordic-role-company {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--headings-color);
+            margin: 0;
+        }
+
+        .nordic-date-span {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin: 1px 0 4px 0;
+        }
+
+        .nordic-job-bullets {
+            list-style: disc;
+            padding-left: 16px;
+            margin: 4px 0 0 0;
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        /* Two-Column References at Bottom */
+        .references-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            font-size: 11.5px;
+            margin-top: 4px;
+        }
+
+        .ref-name {
+            font-weight: 700;
+            color: var(--headings-color);
+            font-size: 12px;
+        }
+
+        .ref-title {
+            color: var(--text-secondary);
+            font-size: 11px;
+            margin-bottom: 2px;
+        }
+
+        .ref-contact {
+            color: var(--text-muted);
+            font-size: 10.5px;
+            line-height: 1.35;
+        }
+    </style>
+</head>
+<body data-template-id="template_11_nordic_navy">
+
+<div class="cv-viewport">
+    <div class="cv-page">
+        <div class="nordic-grid">
+            <!-- Left Midnight Navy Sidebar -->
+            <aside class="nordic-sidebar">
+                <div class="photo-center-block">
+                    <div class="photo-wrapper">
+                        <div class="photo-frame">
+                            <img id="cvProfileImg" src="dummy_profile.jpg" alt="Mike Richrd">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <section>
+                    <h3 class="nordic-side-heading" contenteditable="false">CONTACT</h3>
+                    <div class="nordic-contact-list">
+                        <div class="contact-row-icon">
+                            <span class="contact-icon-circle">📍</span>
+                            <span contenteditable="false">12 Street, City, Country</span>
+                        </div>
+                        <div class="contact-row-icon">
+                            <span class="contact-icon-circle">📞</span>
+                            <span contenteditable="false">+00 999 123 456 789</span>
+                        </div>
+                        <div class="contact-row-icon">
+                            <span class="contact-icon-circle">✉️</span>
+                            <span contenteditable="false">info@yourname.com</span>
+                        </div>
+                        <div class="contact-row-icon">
+                            <span class="contact-icon-circle">🌐</span>
+                            <span contenteditable="false">www.domainname.com</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section>
+                    <h3 class="nordic-side-heading" contenteditable="false">EDUCATION</h3>
+                    <div class="nordic-edu-item item-wrapper">
+                        <div class="nordic-edu-title" contenteditable="false">Master of Business Administration</div>
+                        <div class="nordic-edu-sub" contenteditable="false">State University / Boston</div>
+                        <div class="nordic-edu-years" contenteditable="false">2011 - 2014</div>
+                    </div>
+                    <div class="nordic-edu-item item-wrapper">
+                        <div class="nordic-edu-title" contenteditable="false">Bachelor of Commerce</div>
+                        <div class="nordic-edu-sub" contenteditable="false">City College / Chicago</div>
+                        <div class="nordic-edu-years" contenteditable="false">2007 - 2010</div>
+                    </div>
+                </section>
+
+                <!-- Skills -->
+                <section>
+                    <h3 class="nordic-side-heading" contenteditable="false">SKILLS</h3>
+                    <div class="skills-subgroup-title" contenteditable="false">// Professional</div>
+                    <ul class="nordic-skills-list">
+                        <li contenteditable="false">Public Relations & Strategy</li>
+                        <li contenteditable="false">Corporate Marketing</li>
+                        <li contenteditable="false">Business Development</li>
+                        <li contenteditable="false">Project Planning & Execution</li>
+                        <li contenteditable="false">Stakeholder Management</li>
+                    </ul>
+
+                    <div class="skills-subgroup-title" contenteditable="false" style="margin-top:12px;">// Technical</div>
+                    <ul class="nordic-skills-list">
+                        <li contenteditable="false">Microsoft Office & Excel</li>
+                        <li contenteditable="false">Data Analytics Tools</li>
+                        <li contenteditable="false">Adobe Photoshop & InDesign</li>
+                        <li contenteditable="false">ERP & CRM Systems</li>
+                    </ul>
+                </section>
+            </aside>
+
+            <!-- Right Main Area -->
+            <main class="nordic-main">
+                <!-- Header -->
+                <header class="nordic-header-group">
+                    <h1 class="applicant-name">
+                        <span class="name-bold" contenteditable="false">MIKE</span> <span class="name-light" contenteditable="false">RICHRD</span>
+                    </h1>
+                    <div class="applicant-title" contenteditable="false">SENIOR OPERATIONS & BUSINESS STRATEGIST</div>
+                    <p class="nordic-intro-copy" contenteditable="false">
+                        Dedicated and proactive operations professional with over 8 years of demonstrable success in managing high-stakes corporate initiatives, restructuring resource allocation, and optimizing productivity. Combines analytical acumen with exceptional interpersonal communication to inspire teams and deliver measurable ROI.
+                    </p>
+                </header>
+
+                <!-- Work Experience -->
+                <section>
+                    <h2 class="nordic-section-title" contenteditable="false">WORK EXPERIENCE</h2>
+
+                    <div class="nordic-timeline">
+                        <div class="nordic-job-block item-wrapper">
+                            <div class="nordic-job-line-anchor">
+                                <h4 class="nordic-role-company">
+                                    <span contenteditable="false">AB Development</span> / <span style="font-weight:500; color:var(--text-secondary);" contenteditable="false">Senior Operations Manager</span>
+                                </h4>
+                                <div class="nordic-date-span" contenteditable="false">From 2017 to Present</div>
+                                <ul class="nordic-job-bullets">
+                                    <li contenteditable="false">Direct daily operations across 4 regional branches, achieving a 22% improvement in workflow throughput.</li>
+                                    <li contenteditable="false">Formulated risk mitigation policies and managed a multimillion-dollar annual operational budget.</li>
+                                    <li contenteditable="false">Trained and supervised 30+ team leaders, promoting standard operating procedure compliance.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="nordic-job-block item-wrapper">
+                            <div class="nordic-job-line-anchor">
+                                <h4 class="nordic-role-company">
+                                    <span contenteditable="false">Blue Agency</span> / <span style="font-weight:500; color:var(--text-secondary);" contenteditable="false">Corporate Strategist</span>
+                                </h4>
+                                <div class="nordic-date-span" contenteditable="false">From 2014 to 2017</div>
+                                <ul class="nordic-job-bullets">
+                                    <li contenteditable="false">Consulted with C-suite executives to diagnose workflow bottlenecks and implement digital tools.</li>
+                                    <li contenteditable="false">Negotiated key partner contracts resulting in an annual cost reduction of \$180,000.</li>
+                                    <li contenteditable="false">Delivered monthly performance reports and growth forecast models to shareholders.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="nordic-job-block item-wrapper">
+                            <div class="nordic-job-line-anchor">
+                                <h4 class="nordic-role-company">
+                                    <span contenteditable="false">Creative Zone LTD</span> / <span style="font-weight:500; color:var(--text-secondary);" contenteditable="false">Junior Project Coordinator</span>
+                                </h4>
+                                <div class="nordic-date-span" contenteditable="false">From 2011 to 2014</div>
+                                <ul class="nordic-job-bullets">
+                                    <li contenteditable="false">Assisted lead managers in scheduling, resource logistics, and client communication.</li>
+                                    <li contenteditable="false">Ensured all deliverables adhered to strict quality deadlines and budgetary thresholds.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- References -->
+                <section>
+                    <h2 class="nordic-section-title" contenteditable="false">REFERENCES</h2>
+                    <div class="references-grid">
+                        <div class="item-wrapper">
+                            <div class="ref-name" contenteditable="false">Amay Newston</div>
+                            <div class="ref-title" contenteditable="false">AB Development / Managing Director</div>
+                            <div class="ref-contact" contenteditable="false">Phone: +077 996 841 236<br>Email: amay.newston@example.com</div>
+                        </div>
+                        <div class="item-wrapper">
+                            <div class="ref-name" contenteditable="false">Olivia May</div>
+                            <div class="ref-title" contenteditable="false">Blue Agency / VP Operations</div>
+                            <div class="ref-contact" contenteditable="false">Phone: +077 996 841 238<br>Email: olivia.may@example.com</div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</div>
+
+<script src="cv_customizer.js"></script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template 6 - Split Shaded Accent CV</title>
+    <link rel="stylesheet" href="cv_customizer.css">
+    <style>
+        :root {
+            --primary-accent: #1e3a8a;
+            --secondary-accent: #3b82f6;
+            --sidebar-bg: #f8fafc;
+            --page-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --headings-color: #0f172a;
+            --font-size-name: 30px;
+            --font-size-heading: 13.5px;
+            --font-size-base: 12px;
+        }
+
+        .cv-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            padding: 30px 36px 24px 36px;
+            box-sizing: border-box;
+            background-color: var(--page-bg);
+        }
+
+        /* Top Header */
+        .cv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 20px;
+            margin-bottom: 18px;
+        }
+
+        .header-title-block {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .applicant-name {
+            font-size: var(--font-size-name);
+            font-weight: 800;
+            color: var(--primary-accent);
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .applicant-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--secondary-accent);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin: 0;
+        }
+
+        .contact-inline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 8px;
+            font-size: 11.5px;
+            color: var(--text-secondary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-icon {
+            width: 13px;
+            height: 13px;
+            color: var(--secondary-accent);
+            flex-shrink: 0;
+        }
+
+        /* 2-Column Body */
+        .cv-columns {
+            display: flex;
+            gap: 28px;
+            flex: 1;
+        }
+
+        .col-left {
+            width: 35%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .col-right {
+            width: 65%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Shaded Title Bar */
+        .shaded-title {
+            background-color: #f1f5f9;
+            border-left: 4px solid var(--primary-accent);
+            padding: 5px 10px;
+            font-size: var(--font-size-heading);
+            font-weight: 700;
+            color: var(--headings-color);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin: 0 0 8px 0;
+        }
+
+        .summary-text {
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* Items */
+        .sidebar-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-bottom: 8px;
+        }
+
+        .item-primary {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .item-secondary {
+            font-size: 11.5px;
+            color: var(--text-secondary);
+        }
+
+        .item-date {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Skill bars */
+        .skill-row {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .skill-track {
+            height: 5px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: var(--primary-accent);
+            border-radius: 3px;
+        }
+
+        /* Experience timeline */
+        .exp-item {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-bottom: 12px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .exp-role {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--headings-color);
+            margin: 0;
+        }
+
+        .exp-date {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--secondary-accent);
+        }
+
+        .exp-company {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 3px;
+        }
+
+        .exp-bullets {
+            list-style: disc;
+            padding-left: 16px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+    </style>
+</head>
+<body data-template-id="template_06_split_shaded">
+
+<div class="page-container">
+    <div class="cv-page cv-paper-bg" id="cvPage">
+        <div class="cv-wrapper">
+            <!-- Top Header -->
+            <header class="cv-header">
+                <div class="header-title-block">
+                    <h1 class="applicant-name" contenteditable="false">TAYLOR BAILEY</h1>
+                    <p class="applicant-title" contenteditable="false">Creative Art Director & Brand Strategist</p>
+                    <div class="contact-inline">
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span contenteditable="false">taylor.bailey@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span contenteditable="false">+1 (555) 456-7890</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <span contenteditable="false">Los Angeles, CA</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            <span contenteditable="false">taylorbaileydesign.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photo-wrapper">
+                    <div class="photo-frame">
+                        <img id="cvProfileImg" src="dummy_profile.jpg" alt="Candidate Photo">
+                    </div>
+                </div>
+            </header>
+
+            <!-- 2-Column Content -->
+            <div class="cv-columns">
+                <!-- Left Sidebar -->
+                <aside class="col-left">
+                    <section>
+                        <h3 class="shaded-title" contenteditable="false">PROFILE</h3>
+                        <p class="summary-text" contenteditable="false">
+                            Award-winning Creative Art Director with 8+ years leading visual storytelling, digital brand identities, and multidisciplinary design campaigns. Passionate about translating complex client visions into clean, engaging, and memorable brand experiences.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3 class="shaded-title" contenteditable="false">EDUCATION</h3>
+                        <div class="sidebar-item">
+                            <div class="item-primary" contenteditable="false">B.F.A. Graphic & Visual Design</div>
+                            <div class="item-secondary" contenteditable="false">Rhode Island School of Design (RISD)</div>
+                            <div class="item-date" contenteditable="false">2012 — 2016</div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="shaded-title" contenteditable="false">CREATIVE EXPERTISE</h3>
+                        <div class="skill-row">
+                            <div class="skill-label"><span contenteditable="false">Creative Direction</span><span>96%</span></div>
+                            <div class="skill-track"><div class="skill-fill" style="width: 96%;"></div></div>
+                        </div>
+                        <div class="skill-row">
+                            <div class="skill-label"><span contenteditable="false">Brand Identity Systems</span><span>92%</span></div>
+                            <div class="skill-track"><div class="skill-fill" style="width: 92%;"></div></div>
+                        </div>
+                        <div class="skill-row">
+                            <div class="skill-label"><span contenteditable="false">Adobe Creative Cloud</span><span>98%</span></div>
+                            <div class="skill-track"><div class="skill-fill" style="width: 98%;"></div></div>
+                        </div>
+                        <div class="skill-row">
+                            <div class="skill-label"><span contenteditable="false">Figma & UI/UX Systems</span><span>90%</span></div>
+                            <div class="skill-track"><div class="skill-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-row">
+                            <div class="skill-label"><span contenteditable="false">Typography & Print Production</span><span>94%</span></div>
+                            <div class="skill-track"><div class="skill-fill" style="width: 94%;"></div></div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="shaded-title" contenteditable="false">AWARDS & HONORS</h3>
+                        <div class="sidebar-item">
+                            <div class="item-primary" contenteditable="false">Gold Lion Award (Cannes)</div>
+                            <div class="item-secondary" contenteditable="false">Best Integrated Digital Campaign (2022)</div>
+                        </div>
+                        <div class="sidebar-item">
+                            <div class="item-primary" contenteditable="false">AIGA Design Excellence</div>
+                            <div class="item-secondary" contenteditable="false">Annual Identity Showcase (2020)</div>
+                        </div>
+                    </section>
+                </aside>
+
+                <!-- Right Content -->
+                <main class="col-right">
+                    <section>
+                        <h3 class="shaded-title" contenteditable="false">WORK EXPERIENCE</h3>
+
+                        <div class="exp-item item-wrapper">
+                            <div class="exp-header">
+                                <h4 class="exp-role" contenteditable="false">Creative Art Director</h4>
+                                <span class="exp-date" contenteditable="false">2020 — PRESENT</span>
+                            </div>
+                            <div class="exp-company" contenteditable="false">Vanguard Creative Agency • Los Angeles, CA</div>
+                            <ul class="exp-bullets">
+                                <li contenteditable="false">Head visual direction and creative strategy for national lifestyle and technology brands, overseeing a team of 10 designers and copywriters.</li>
+                                <li contenteditable="false">Spearheaded the visual rebranding for 3 Fortune 500 accounts, resulting in an average 34% increase in brand recall and engagement.</li>
+                                <li contenteditable="false">Standardized agency design system libraries in Figma, accelerating client pitch asset production cycles by 40%.</li>
+                            </ul>
+                        </div>
+
+                        <div class="exp-item item-wrapper">
+                            <div class="exp-header">
+                                <h4 class="exp-role" contenteditable="false">Senior Visual Designer</h4>
+                                <span class="exp-date" contenteditable="false">2017 — 2020</span>
+                            </div>
+                            <div class="exp-company" contenteditable="false">Studio Eleven Design Labs • Los Angeles, CA</div>
+                            <ul class="exp-bullets">
+                                <li contenteditable="false">Crafted comprehensive brand style guides, packaging guidelines, and omnichannel marketing assets for consumer clients.</li>
+                                <li contenteditable="false">Collaborated directly with product marketing leaders to produce interactive web and motion design deliverables.</li>
+                                <li contenteditable="false">Mentored junior and mid-level designers in typography hierarchy, color theory, and print finishing.</li>
+                            </ul>
+                        </div>
+
+                        <div class="exp-item item-wrapper">
+                            <div class="exp-header">
+                                <h4 class="exp-role" contenteditable="false">Junior Designer</h4>
+                                <span class="exp-date" contenteditable="false">2016 — 2017</span>
+                            </div>
+                            <div class="exp-company" contenteditable="false">Pixel & Craft Workshop • Providence, RI</div>
+                            <ul class="exp-bullets">
+                                <li contenteditable="false">Assisted in print layout, photo retouching, and production file preparation for editorial publications.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="shaded-title" contenteditable="false">SELECTED CAMPAIGNS</h3>
+                        <div class="exp-item item-wrapper">
+                            <div class="item-primary" contenteditable="false">EcoSphere Sustainability Global Launch</div>
+                            <p class="summary-text" style="font-size: 11.5px;" contenteditable="false">
+                                Led 360-degree campaign across out-of-home billboards, interactive web portals, and packaging, reaching 12M+ consumers worldwide.
+                            </p>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="cv_customizer.js"></script>
+</body>
+</html>

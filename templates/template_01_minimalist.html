@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template 1 - Minimalist Studio CV</title>
+    <link rel="stylesheet" href="cv_customizer.css">
+    <style>
+        :root {
+            --primary-accent: #334155;
+            --secondary-accent: #64748b;
+            --sidebar-bg: #f1f4f8;
+            --page-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --headings-color: #0f172a;
+            --font-size-name: 28px;
+            --font-size-heading: 14px;
+            --font-size-base: 12.5px;
+        }
+
+        .cv-grid {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Left Column / Sidebar */
+        .sidebar {
+            width: 34%;
+            background-color: var(--sidebar-bg);
+            padding: 38px 28px 30px 32px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar-header {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .applicant-name {
+            font-size: var(--font-size-name);
+            font-weight: 800;
+            color: var(--headings-color);
+            letter-spacing: 0.5px;
+            line-height: 1.15;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .applicant-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin: 0;
+            margin-top: 4px;
+        }
+
+        .sidebar-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sidebar-title {
+            font-size: var(--font-size-heading);
+            font-weight: 700;
+            color: var(--headings-color);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            border-bottom: 1.5px solid #cbd5e1;
+            padding-bottom: 5px;
+            margin: 0;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            line-height: 1.4;
+        }
+
+        .contact-icon {
+            width: 15px;
+            height: 15px;
+            color: var(--primary-accent);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 12.5px;
+            color: var(--text-secondary);
+        }
+
+        .skills-list li {
+            position: relative;
+            padding-left: 14px;
+            line-height: 1.4;
+        }
+
+        .skills-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-accent);
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        /* Right Column / Main Body */
+        .main-content {
+            width: 66%;
+            padding: 40px 36px 30px 36px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            background-color: var(--page-bg);
+        }
+
+        .content-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .section-header-line {
+            font-size: var(--font-size-heading);
+            font-weight: 700;
+            color: var(--headings-color);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            border-bottom: 1.5px solid #94a3b8;
+            padding-bottom: 5px;
+            margin: 0 0 4px 0;
+        }
+
+        .summary-text {
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .timeline-entry {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-bottom: 16px;
+        }
+
+        .entry-date {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+
+        .entry-role {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--headings-color);
+            margin: 0;
+        }
+
+        .entry-company {
+            font-size: 12.5px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin: 0 0 6px 0;
+        }
+
+        .entry-bullets {
+            list-style: disc;
+            padding-left: 18px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+    </style>
+</head>
+<body data-template-id="template_01_minimalist">
+
+<div class="cv-viewport">
+    <div class="cv-page">
+        <div class="cv-grid">
+            <!-- Left Sidebar -->
+            <aside class="sidebar">
+                <!-- Profile Photo -->
+                <div class="photo-wrapper">
+                    <div class="photo-frame">
+                        <img id="cvProfileImg" src="dummy_profile.jpg" alt="Candidate Photo">
+                    </div>
+                </div>
+
+                <div class="sidebar-header">
+                    <h1 class="applicant-name" contenteditable="false">KELLY<br>BLACKWELL</h1>
+                    <p class="applicant-title" contenteditable="false">Administrative Assistant</p>
+                </div>
+
+                <!-- Contacts -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title" contenteditable="false">CONTACTS</h3>
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span contenteditable="false">kelly.blackwell@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span contenteditable="false">(210) 286-1624</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <span contenteditable="false">1685 N Commerce Island Pkwy, Weston, FL 33326</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title" contenteditable="false">SKILLS</h3>
+                    <ul class="skills-list">
+                        <li contenteditable="false">Analytical Thinking</li>
+                        <li contenteditable="false">Tolerant & Flexible</li>
+                        <li contenteditable="false">Team Leadership</li>
+                        <li contenteditable="false">Organization & Prioritization</li>
+                        <li contenteditable="false">Strong Communication</li>
+                        <li contenteditable="false">Records & Filing Systems</li>
+                        <li contenteditable="false">Executive Scheduling</li>
+                        <li contenteditable="false">MS Office Suite & Excel</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Right Main Area -->
+            <main class="main-content">
+                <!-- Summary -->
+                <section class="content-section">
+                    <h2 class="section-header-line" contenteditable="false">SUMMARY</h2>
+                    <p class="summary-text" contenteditable="false">
+                        Administrative assistant with 9+ years of experience organizing executive presentations, preparing facility reports, and maintaining the utmost confidentiality. Possesses strong expertise in office management, workflow coordination, and MS Excel. Looking to leverage proven organizational skills into the open role at your organization.
+                    </p>
+                </section>
+
+                <!-- Experience -->
+                <section class="content-section">
+                    <h2 class="section-header-line" contenteditable="false">EXPERIENCE</h2>
+
+                    <div class="timeline-entry item-wrapper">
+                        <span class="entry-date" contenteditable="false">Sep 2017 — Current</span>
+                        <h4 class="entry-role" contenteditable="false">Administrative Assistant</h4>
+                        <div class="entry-company" contenteditable="false">Redford & Sons, Boston, MA</div>
+                        <ul class="entry-bullets">
+                            <li contenteditable="false">Schedule and coordinate meetings, appointments, and travel arrangements for supervisors, managers, and C-level executives.</li>
+                            <li contenteditable="false">Trained 2 administrative assistants during a period of rapid company expansion to ensure attention to detail and adherence to policy.</li>
+                            <li contenteditable="false">Streamlined office supply procurement, reducing monthly expenditure by 12% while maintaining inventory.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-entry item-wrapper">
+                        <span class="entry-date" contenteditable="false">May 2016 — Jul 2017</span>
+                        <h4 class="entry-role" contenteditable="false">Secretary & Front Desk Specialist</h4>
+                        <div class="entry-company" contenteditable="false">Bright Spot Ltd., Boston, MA</div>
+                        <ul class="entry-bullets">
+                            <li contenteditable="false">Typed documents such as correspondence, drafts, memos, and emails, and prepared 3 operational reports weekly for senior leadership.</li>
+                            <li contenteditable="false">Opened, sorted, and distributed incoming messages and correspondence to the appropriate department personnel.</li>
+                            <li contenteditable="false">Managed client reception and phone communications with a 98% positive service feedback rating.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section class="content-section">
+                    <h2 class="section-header-line" contenteditable="false">EDUCATION</h2>
+
+                    <div class="timeline-entry item-wrapper">
+                        <span class="entry-date" contenteditable="false">Jul 2004 — Jul 2009</span>
+                        <h4 class="entry-role" contenteditable="false">Bachelor of Arts, Business Administration & Finance</h4>
+                        <div class="entry-company" contenteditable="false">Brown University, Providence, RI</div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</div>
+
+<script src="cv_customizer.js"></script>
+</body>
+</html>
